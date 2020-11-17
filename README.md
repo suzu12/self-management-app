@@ -49,7 +49,7 @@
 | ------- | ---------- | ----------------- |
 | content | string     | null: false       |
 | user    | references | foreign_key: true |
-| teams   | references | foreign_key: true |
+| team    | references | foreign_key: true |
 
 ### Association
 
