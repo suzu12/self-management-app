@@ -1,0 +1,20 @@
+= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f|
+  .form-wrap
+    .form-header
+      %h1.form-header-text
+        会員情報入力
+    .login-flash-message
+      = flash[:notice]
+      = flash[:alert]
+    .form-group
+      .form-text-wrap
+        %label.form-text メールアドレス
+        %span.indispensable 必須
+      = f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true
+    .form-group
+      .form-text-wrap
+        %label.form-text パスワード
+        %span.indispensable 必須
+      = f.password_field :password, class:"input-default", id:"password", placeholder:""
+    .login-btn
+      = f.submit "ログイン" ,class:"login-red-btn"
