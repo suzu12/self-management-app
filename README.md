@@ -1,25 +1,57 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false, unique: true |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| bio                | text    | null: false               |
+| birthday           | date    | null: false               |
+| gender             | integer | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :user_teams
+- has_many :teams, through: user_teams
 
-* Configuration
 
-* Database creation
+## teams テーブル
 
-* Database initialization
+| Column        | Type       | Options           |
+| ------------- | -----------| ------------------|
+| category_id   | integer    | null: false       |
+| team_name     | string     | null: false       |
+| introduction  | text       | null: false       |
+| period        | integer    | null: false       |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :user_teams
+- has_many :users, through: user_teams
 
-* Deployment instructions
+## user_teams テーブル
 
-* ...
-# self-management-app
+| Column  | Type       | Options           |
+| ------- | ---------- | ------------------|
+| user    | references | foreign_key: true |
+| team    | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :teams
+
+## chats テーブル
+
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| content | string     | null: false       |
+| user    | references | foreign_key: true |
+| team    | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :teams
