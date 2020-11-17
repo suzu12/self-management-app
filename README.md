@@ -4,12 +4,9 @@
 
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
-| nickname           | string  | null: false, unique: true |
+| nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
-| bio                | text    | null: false               |
-| birthday           | date    | null: false               |
-| gender             | integer | null: false               |
 
 ### Association
 
