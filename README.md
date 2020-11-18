@@ -21,7 +21,7 @@
 | category_id   | integer    | null: false       |
 | team_name     | string     | null: false       |
 | introduction  | text       | null: false       |
-| period        | integer    | null: false       |
+| period_id     | integer    | null: false       |
 
 ### Association
 
