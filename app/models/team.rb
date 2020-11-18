@@ -3,6 +3,8 @@ class Team < ApplicationRecord
   belongs_to :category
   belongs_to :period
 
+  has_one_attached :image
+
   with_options presence: true do
     validates :category_id
     validates :team_name, length: { maximum: 15 }
