@@ -8,6 +8,27 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %header.header
+      .header_left
+        %p.header_logos
+          - unless current_page?(root_path) || current_page?(new_user_session_path)
+            = link_to image_tag('back.svg'), :back
+        %p.header_pageTitle
+          = link_to 'Good Habit', root_path
+      .header_right
+        - if user_signed_in?
+          .pulldown#pulldown
+            = image_tag 'default.png', class: 'header_avatar pullbtn'
+            .pulldown_content.hiddin#pulldown-list
+              = link_to 'プロフィール', root_path
+              = link_to 'お気に入り', root_path
+              = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+        - else
+          = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
     %p.notice= notice
     %p.alert= alert
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
     = yield
