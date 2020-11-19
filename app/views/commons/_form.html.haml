@@ -1,0 +1,30 @@
+.container
+  = form_with(model: @team, url: teams_path, local: true) do |f|
+    = render 'commons/error_messages', model: f.object
+
+    %div
+      = f.label :image, 'ヘッダー画像'
+    %div
+      = f.file_field :image
+
+    %div
+      = f.label :category_id, 'カテゴリー'
+    %div
+      = f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"category"})
+    
+    %div
+      = f.label :team_name, 'チーム名'
+    %div
+      = f.text_field :team_name, class: 'text', placeholder: '早起きして、人生を充実！！'
+    
+    %div
+      = f.label :period_id, '目標期間'
+    %div
+      = f.collection_select(:period_id, Period.all, :id, :name, {}, {class:"select-box", id:"period"})
+    
+    %div
+      = f.label :introduction, 'チームの説明文'
+    %div
+      = f.text_area :introduction, placeholder: 'みんなで仲良くやっていきましょう！！毎日楽しくをモットーにしているチームです！'
+
+    = f.submit 'チームを作る', class: 'btn-primary'
