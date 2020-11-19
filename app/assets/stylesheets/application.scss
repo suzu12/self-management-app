@@ -17,3 +17,14 @@
  * {
   box-sizing: border-box;
 }
+
+body {
+  height: 100vh;
+  font-size: 1em;
+}
+
+.container {
+  padding: 20px;
+  width: 100%;
+  background-color: rgb(241, 245, 247);
+}
