@@ -1,0 +1,37 @@
+.commons_detail {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(241, 245, 247);
+  padding: 10px 0;
+}
+
+.detail {
+  padding: 15px;
+  line-height: 1.5em;
+
+
+  &_update {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid rgb(241, 245, 247);
+    border-bottom: 2px solid rgb(241, 245, 247);
+    padding: 10px 0;
+  }
+
+  &_category {
+    @extend .commons_detail
+  }
+
+  &_age_limit {
+    @extend .commons_detail
+  }
+
+  &_gender_limit {
+    @extend .commons_detail
+  }
+
+  &_period_limit {
+    @extend .commons_detail
+  }
+
+}

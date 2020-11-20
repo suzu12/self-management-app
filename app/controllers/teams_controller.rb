@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-  # before_action :authenticate_user! only: [:index]
+  before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_team, only: [:show]
 
   def index
     @teams = Team.all.order('created_at DESC')
@@ -23,5 +24,9 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:category_id, :team_name, :introduction, :period_id, :image)
+  end
+
+  def set_team
+    @team = Team.find(params[:id])
   end
 end

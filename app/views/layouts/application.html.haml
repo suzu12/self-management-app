@@ -10,16 +10,16 @@
   %body
     %header.header
       .header_left
-        %p.header_logos
+        .header_logos
           - unless current_page?(root_path) || current_page?(new_user_session_path)
             = link_to image_tag('back.svg'), :back
-        %p.header_pageTitle
-          = link_to 'Good Habit', root_path
+        .header_pageTitle
+          %h1= link_to 'Good Habit', root_path
       .header_right
         - if user_signed_in?
           .pulldown#pulldown
             = image_tag 'default.png', class: 'header_avatar pullbtn'
-            .pulldown_content.hiddin#pulldown-list
+            .pulldown_content.hidden#pulldown-list
               = link_to 'プロフィール', root_path
               = link_to 'お気に入り', root_path
               = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }

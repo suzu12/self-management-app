@@ -29,7 +29,7 @@
   &_pageTitle {
     color: white;
     line-height: 40px;
-    font-size: 22px;
+    font-size: 24px;
   }
 
   a {
@@ -80,11 +80,11 @@
       padding: 8px 16px;
       text-decoration: none;
       display: block;
-      color: $base-color;
+      color: #000;
     }
   }
 }
 
-.hiddin {
+.hidden {
   display: none;
 }
