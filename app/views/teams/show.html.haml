@@ -1,0 +1,48 @@
+.container
+  .team
+    .team_top
+      .team_image
+        = image_tag @team.image
+        -# - if user_signed_in? && current_user.id == team.user_id 中間テーブル作成後に実装(サインインしていて、チームを作った本人なら編集・削除ボタンを表示)
+      .team_setting#set
+        = image_tag 'setting', size: '25x25'
+        .team_setting_change.hidden#set-list
+          = link_to '編集する', root_path
+          = link_to '削除する', root_path
+      -# - else
+      -# .team_star
+        = image_tag 'star-white.png', size: '25x25'
+      .team_name
+        %p= @team.team_name
+    .team_under
+      .team_introduction
+        %p= @team.introduction
+    .detail
+      .detail_update
+        %p 最終更新
+        %p= l @team.updated_at, format: :short
+
+      .detail_category
+        %p カテゴリー
+        %p= @team.category.name
+
+      .detail_age_limit
+        %p 年齢制限
+        %p= '30歳'
+
+      .detail_gender_limit
+        %p 性別制限
+        %p= '制限なし'
+
+      .detail_period_limit
+        %p 目標期間
+        %p= @team.period.name
+
+      .star
+        .star_count
+          現在２人がお気に入りしています。
+        .star_status
+          いいねボタンを配置
+
+  .btn
+    %input(type="submit" class='btn-primary' value='このチームに参加する！')/
