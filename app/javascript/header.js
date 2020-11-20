@@ -11,7 +11,7 @@ const pullDown = ( () => {
         }
       });
 
-      pullDownContent.forEach(function(content) {
+      pullDownContent.forEach(function (content) {
       });
     };
 });
