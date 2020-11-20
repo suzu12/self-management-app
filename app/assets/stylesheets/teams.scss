@@ -2,7 +2,7 @@
 
 .team {
   margin: 18px 0;
-  height: 300px;
+  height: auto;
   background-color: $base-color;
   border-radius: 10px;
   cursor: pointer;
@@ -10,8 +10,34 @@
 
   &_top {
     position: relative;
+    height: 150px;
   }
   
+  &_setting {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-size: cover;
+    margin-top: 10px;
+    margin-right: 10px;
+
+    &_change {
+      font-weight: normal;
+      right: 0;
+      position: absolute;
+      background-color: $base-color;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+  
+      a {
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+        color: #000;
+      }
+    }
+  }
 
   &_star {
     position: absolute;
@@ -58,6 +84,16 @@
   }
 
   &_under {
+    height: 150px;
     padding: 5px 15px;
+    color: #000;
+    font-size: 20px;
+    line-height: 1.5em;
+    overflow-wrap: break-word;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
+
