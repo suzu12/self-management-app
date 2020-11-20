@@ -7,6 +7,7 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}/
   %body
     %header.header
       .header_left
@@ -25,8 +26,6 @@
               = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
         - else
           = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
-    %p.notice= notice
-    %p.alert= alert
     - if flash.present?
       .flash
         - flash.each do |key, value|

@@ -1,5 +1,5 @@
 .container
-  = form_with(model: @team, url: teams_path, local: true) do |f|
+  = form_with(model: @team, local: true) do |f|
     = render 'commons/error_messages', model: f.object
 
     %div

@@ -7,7 +7,7 @@
       .team_setting#set
         = image_tag 'setting', size: '25x25'
         .team_setting_change.hidden#set-list
-          = link_to '編集する', root_path
+          = link_to '編集する', edit_team_path(@team)
           = link_to '削除する', root_path
       -# - else
       -# .team_star
