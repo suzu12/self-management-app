@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_team, only: [:show, :edit, :update]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def index
     @teams = Team.all.order('created_at DESC')
@@ -27,6 +27,11 @@ class TeamsController < ApplicationController
       flash.now[:error] = '編集に失敗しました'
       render :edit
     end
+  end
+  
+  def destroy
+    @team.destroy!
+    redirect_to root_path, notice: '削除することができました！'
   end
   
 
