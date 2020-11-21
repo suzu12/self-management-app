@@ -2,9 +2,10 @@
   = link_to team_path(teams) do
     .team_top
       .team_image
-        = image_tag teams.image
-      .team_star
-        = image_tag 'star-white.png', size: '25x25'
+        = image_tag(teams.image) if teams.image.attached?
+      - if user_signed_in? && current_user.has_made?(teams)
+        .team_star
+          = image_tag 'star-white.png', size: '25x25'
       .team_name
         %p= teams.team_name
     .team_under

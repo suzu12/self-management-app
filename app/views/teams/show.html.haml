@@ -2,16 +2,16 @@
   .team
     .team_top
       .team_image
-        = image_tag @team.image
-        -# - if user_signed_in? && current_user.id == team.user_id 中間テーブル作成後に実装(サインインしていて、チームを作った本人なら編集・削除ボタンを表示)
-      .team_setting#set
-        = image_tag 'setting', size: '25x25'
-        .team_setting_change.hidden#set-list
-          = link_to '編集する', edit_team_path(@team)
-          = link_to '削除する', team_path(@team), data: { method: :delete, confirm: '本当に削除しますか?' }
-      -# - else
-      -# .team_star
-        = image_tag 'star-white.png', size: '25x25'
+        = image_tag @team.image if @team.image.attached?
+      - if user_signed_in? && current_user.has_made?(@team)
+        .team_setting#set
+          = image_tag 'setting', size: '25x25'
+          .team_setting_change.hidden#set-list
+            = link_to '編集する', edit_team_path(@team)
+            = link_to '削除する', team_path(@team), data: { method: :delete, confirm: '本当に削除しますか?' }
+      - else
+        .team_star
+          = image_tag 'star-white.png', size: '25x25'
       .team_name
         %p= @team.team_name
     .team_under
