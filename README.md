@@ -52,3 +52,16 @@
 
 - belongs_to :user
 - belongs_to :teams
+
+## profiles テーブル
+
+| Column   | Type       | Options     |
+| -------- | ---------- | ----------- |
+| bio      | text       | null: false |
+| birthday | date       | null: false |
+| gender   | integer    | null: false |
+| user     | references | null: false |
+
+### Association
+
+- belongs_to :user
