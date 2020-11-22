@@ -9,7 +9,7 @@
           .team_setting_change.hidden#set-list
             = link_to '編集する', edit_team_path(@team)
             = link_to '削除する', team_path(@team), data: { method: :delete, confirm: '本当に削除しますか?' }
-      - else
+      - elsif user_signed_in?
         .team_star
           = image_tag 'star-white.png', size: '25x25'
       .team_name

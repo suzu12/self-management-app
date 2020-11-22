@@ -19,9 +19,9 @@
       .header_right
         - if user_signed_in?
           .pulldown#pulldown
-            = image_tag 'default.png', class: 'header_avatar pullbtn'
+            = image_tag current_user.icon_image, class: 'header_icon'
             .pulldown_content.hidden#pulldown-list
-              = link_to 'プロフィール', root_path
+              = link_to 'プロフィール', profile_path(current_user)
               = link_to 'お気に入り', root_path
               = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
         - else

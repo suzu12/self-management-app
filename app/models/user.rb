@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  has_one :profile, dependent: :destroy
   has_many :team_users
   has_many :teams, through: :team_users
 
@@ -15,5 +16,17 @@ class User < ApplicationRecord
 
   def has_made?(team)
     teams.exists?(id: team.id)
+  end
+
+  def icon_image
+    if profile&.icon&.attached?
+      profile.icon
+    else
+      'default.png'
+    end
+  end
+
+  def which_profile
+    profile || build_profile
   end
 end
