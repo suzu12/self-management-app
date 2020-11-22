@@ -1,0 +1,33 @@
+.container
+  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+    = render 'commons/error_messages', model: f.object
+    
+    %div
+      = f.label :icon, 'アイコン'
+    %div
+      = f.file_field :icon
+    %div
+      = f.label :bio, '自己紹介'
+    %div
+      = f.text_area :bio
+    %div
+      = f.label :gender, '性別'
+    %div
+      = f.select :gender, Profile.genders.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, {class: 'text'}
+    %div
+      = f.label :生年月日
+    %div
+      .input-birth-wrap
+        = raw sprintf(                               |
+          f.date_select(                             |
+            :birthday,                               |
+            class:'select-birth',                    |
+            id:"birth-date",                         |
+            use_month_numbers: true,                 |
+            prompt:'--',                             |
+            start_year: 1930,                        |
+            end_year: (Time.now.year - 5),           |
+            date_separator: '%s'),                   |
+          "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" |
+
+    = f.submit '保存', class: 'btn-primary'
