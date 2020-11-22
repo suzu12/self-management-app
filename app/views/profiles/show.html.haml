@@ -1,0 +1,27 @@
+.container
+  .profilePage
+    .profilePage_user
+      .profilePage_user_image
+        = image_tag current_user.icon_image
+
+      .profilePage_user_info
+        .profilePage_user_name
+          %P= "【ニックネーム】"
+          %p= current_user.nickname
+        - if @profile.present?
+          .profilePage_user_birthday
+            %p= "【年齢】"
+            %p= @profile.age
+          .profilePage_user_gender
+            %p= "【性別】"
+            %p= I18n.t("enum.genders.#{@profile.gender}")
+    - if @profile.present?
+      .profilePage_user_actionButton
+        - if user_signed_in? && @profile.user.id == current_user.id
+          = link_to '編集する', edit_profile_path
+      .profilePage_user_bio
+        %p= '自己紹介'
+        %p= @profile.bio
+
+    - current_user.teams.each do |team|
+      = render 'commons/teams', teams: team
