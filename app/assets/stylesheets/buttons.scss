@@ -1,6 +1,6 @@
 @import './variables';
 
-.btn-primary {
+.common-primary {
   background-color: $primary-color;
   border: none;
   width: 100%;
@@ -8,6 +8,11 @@
   color: $base-color;
   padding: 16px 0;
   font-weight: bold;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  @extend .common-primary
 }
 
 .float_btn {
@@ -25,4 +30,10 @@
   i {
     margin-top: 22px;
   }
+}
+
+.join_team {
+  text-decoration: none;
+  display: block;
+  @extend .common-primary
 }
