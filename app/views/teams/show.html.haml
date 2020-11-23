@@ -45,4 +45,4 @@
           いいねボタンを配置
 
   .btn
-    %input(type="submit" class='btn-primary' value='このチームに参加する！')/
+    = link_to 'このチームに参加する！', team_chats_path(@team), class: 'btn-primary'
