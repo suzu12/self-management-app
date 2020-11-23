@@ -1,0 +1,17 @@
+.chat
+  .chat_user
+    .chat_user_icon
+      = image_tag(chat.user.icon_image)
+      .chat_user_name
+        = chat.user.nickname
+    .chat_user_message
+      .chat_content
+        %p= chat.content
+        = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
+      .chat_date
+        = l(chat.created_at, format: :chat)
+  .mychat
+    .chat_date
+      = l(chat.created_at, format: :chat)
+    %p= chat.content
+    = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
