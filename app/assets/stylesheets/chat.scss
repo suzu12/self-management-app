@@ -1,0 +1,109 @@
+.chats {
+  height: 100vh;
+  padding: 46px 40px 0;
+  overflow: scroll;
+}
+
+.chat {
+  padding: 20px 10px;
+  margin: 15px auto;
+  text-align: right;
+
+  &_header {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  &_user {
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+
+    &_name {
+      margin: 0 0 0 10px;
+      padding: 0;
+    }
+  
+    &_icon {
+      text-align: left;
+      margin-right: -50px;
+      width: 40px;
+      display: flex;
+  
+      img{
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+    &_message {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &_content {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 50px;
+    padding: 10px;
+    max-width: 350px;
+    overflow-wrap: break-word;
+    border-radius: 12px;
+    background: #edf1ee;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 3px; 
+      left: -19px;
+      border: 8px solid transparent;
+      border-right: 18px solid #edf1ee;
+      -webkit-transform: rotate(35deg);
+      transform: rotate(35deg);
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &_date {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #999;
+    display: inline;
+  }
+
+}
+
+.mychat {
+  margin: 10px 0;
+
+  p {
+    display: inline-block;
+    position: relative; 
+    margin: 0 10px 20px 0;
+    padding: 8px;
+    max-width: 350px;
+    overflow-wrap: break-word;
+    border-radius: 12px;
+    background: #30e852;
+    font-size: 15px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 3px; 
+      right: -19px;
+      border: 8px solid transparent;
+      border-left: 18px solid #30e852;
+      -webkit-transform: rotate(-35deg);
+      transform: rotate(-35deg);
+    }
+  }
+}
