@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'teams#index'
   resources :teams do
     resources :chats, only: %i(index create)
+    resources :team_users, only: :create
   end
   resource :profile, only: %i(show edit update)
 end
