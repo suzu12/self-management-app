@@ -15,10 +15,10 @@
           .profilePage_user_gender
             %p= "【性別】"
             %p= I18n.t("enum.genders.#{@profile.gender}")
+    .profilePage_user_actionButton
+      - if user_signed_in?
+        = link_to '編集する', edit_profile_path
     - if @profile.present?
-      .profilePage_user_actionButton
-        - if user_signed_in? && @profile.user.id == current_user.id
-          = link_to '編集する', edit_profile_path
       .profilePage_user_bio
         %p= '自己紹介'
         %p= @profile.bio
