@@ -206,4 +206,5 @@ ja:
       default: "%Y/%m/%d"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      chat: "%H:%M"
     pm: 午後
