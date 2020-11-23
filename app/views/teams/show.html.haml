@@ -43,6 +43,10 @@
           現在２人がお気に入りしています。
         .star_status
           いいねボタンを配置
-
-  .btn
-    = link_to 'このチームに参加する！', team_chats_path(@team), class: 'btn-primary'
+  - if user_signed_in?
+    - unless current_user.has_made?(@team)
+      = form_with(url: team_team_users_path(@team), local: true) do |f|
+        = f.submit "このチームに参加する！", class: 'btn-primary'
+        = f.hidden_field 'team[user_ids][]', value: current_user.id
+    - else
+      = link_to '仲間と会話を始めよう！', team_chats_path(@team), class: 'join_team'
