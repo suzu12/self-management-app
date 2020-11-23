@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :chats, only: %i(index create)
     resources :team_users, only: :create
   end
-  resource :profile, only: %i(show edit update)
+  resources :profiles, only: %i(show edit update)
 end
