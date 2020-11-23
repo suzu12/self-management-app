@@ -2,8 +2,7 @@
   .chat_user
     .chat_user_icon
       = image_tag(chat.user.icon_image)
-      .chat_user_name
-        = chat.user.nickname
+      %p= chat.user.nickname
     .chat_user_message
       .chat_content
         %p= chat.content

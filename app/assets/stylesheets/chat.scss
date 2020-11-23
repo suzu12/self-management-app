@@ -19,22 +19,23 @@
     width: 100%;
     margin: 10px 0;
     overflow: hidden;
-
-    &_name {
-      margin: 0 0 0 10px;
-      padding: 0;
-    }
   
     &_icon {
       text-align: left;
       margin-right: -50px;
       width: 40px;
       display: flex;
-  
+
       img{
         width: 100%;
-        height: auto;
+        height: 100%;
         border-radius: 50%;
+      }
+
+      p {
+        margin: 0 0 0 10px;
+        padding: 0;
+        direction : ltr;
       }
     }
     &_message {
