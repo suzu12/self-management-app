@@ -30,3 +30,47 @@ textarea {
   padding-left: 20px;
   border: 1px solid #EBEBEB;
 }
+
+.form {
+  display: flex;
+  position: fixed;
+  bottom: 10px;
+  right: 5px;
+  width: 100%;
+  align-items: center;
+  height: 60px;
+
+  &-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &-chat {
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    height: 35px;
+  }
+
+  &-submit {
+    background-color: $primary-color;
+    border: none;
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    margin-left: 15px;
+    padding: 0 15px;
+    border-radius: 10px;
+  }
+
+  &-image {
+    padding: 12px;
+    width: 60px;
+    margin: 5px 10px;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+}

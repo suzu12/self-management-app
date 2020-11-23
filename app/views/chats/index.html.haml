@@ -1,0 +1,15 @@
+.wrapper
+  .chat_header
+    = @team.team_name
+  .chats
+    = render partial: 'chat', collection: @chats
+
+  = form_with(model: [@team, @chat], class: 'form', local: true) do |f|
+    = render 'commons/error_messages', model: f.object
+    .form-input
+      %label.form-image
+        = image_tag 'photo.png'
+        #{f.file_field :photo, class: 'hidden'}
+      = f.text_field :content, class: 'form-chat', placeholder: 'Aa'
+
+    = f.submit "送信", class: 'form-submit'

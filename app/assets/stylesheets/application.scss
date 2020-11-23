@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import './variables';
 
  * {
   box-sizing: border-box;
@@ -27,4 +28,8 @@ body {
   padding: 20px;
   width: 100%;
   background-color: rgb(241, 245, 247);
+}
+
+.wrapper {
+  background-color: $base-color;
 }

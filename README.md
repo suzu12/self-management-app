@@ -12,6 +12,8 @@
 
 - has_many :user_teams
 - has_many :teams, through: user_teams
+- has_many :chats
+- has_one :profile
 
 
 ## teams テーブル
@@ -27,6 +29,7 @@
 
 - has_many :user_teams
 - has_many :users, through: user_teams
+- has_many :chats
 
 ## user_teams テーブル
 
@@ -38,7 +41,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :teams
+- belongs_to :team
 
 ## chats テーブル
 
@@ -51,7 +54,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :teams
+- belongs_to :team
 
 ## profiles テーブル
 
