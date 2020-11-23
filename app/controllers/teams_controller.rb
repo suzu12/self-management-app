@@ -11,6 +11,10 @@ class TeamsController < ApplicationController
     @team.users << current_user
   end
 
+  def show
+    @team_user = TeamUser.new
+  end
+
   def create
     if current_user.teams.create(team_params)
       redirect_to root_path, notice: '保存できました！'
