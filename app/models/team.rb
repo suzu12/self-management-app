@@ -7,6 +7,7 @@ class Team < ApplicationRecord
   has_many :team_users
   has_many :users, through: :team_users, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   with_options presence: true do
     validates :category_id
