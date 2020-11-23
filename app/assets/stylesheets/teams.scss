@@ -83,6 +83,26 @@
     margin: 0;
   }
 
+  &_center {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+    &_icon {
+      padding: 25px;
+      position: absolute;
+
+      img {
+        width: 56px;
+        height: 56px;
+        border-radius: 100%;
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+
   &_under {
     height: 150px;
     padding: 5px 15px;
