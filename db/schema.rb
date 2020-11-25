@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_115658) do
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "team_id", null: false
+    t.bigint "user_id"
+    t.bigint "team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_likes_on_team_id"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_115658) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chats", "teams"
   add_foreign_key "chats", "users"
+  add_foreign_key "likes", "teams"
+  add_foreign_key "likes", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "team_users", "teams"
   add_foreign_key "team_users", "users"
