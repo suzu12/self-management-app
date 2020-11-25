@@ -1,10 +1,12 @@
-.team
+.team#js-team-data{data: {team_id: teams.id}}
   = link_to team_path(teams) do
     .team_top
       .team_image
         = image_tag(teams.image) if teams.image.attached?
       - if user_signed_in? && !(current_user.has_made?(teams))
-        .team_star
+        .team_star.hidden.active-star{id: "active-star#{teams.id}", data: {team_id: teams.id}}
+          = image_tag 'star-yellow.png', size: '25x25'
+        .team_star.hidden.in-active-star{id: "in-active-star#{teams.id}", data: {team_id: teams.id}}
           = image_tag 'star-white.png', size: '25x25'
       .team_name
         %p= teams.team_name
