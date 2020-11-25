@@ -33,4 +33,8 @@ class User < ApplicationRecord
   def which_profile
     profile || build_profile
   end
+
+  def has_liked?(team)
+    likes.exists?(team_id: team.id)
+  end
 end
