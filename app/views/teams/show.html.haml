@@ -1,5 +1,5 @@
 .container
-  .team
+  .team#js-team-data{data: {team_id: @team.id}}
     .team_top
       .team_image
         = image_tag @team.image if @team.image.attached?
@@ -10,7 +10,9 @@
             = link_to '編集する', edit_team_path(@team)
             = link_to '削除する', team_path(@team), data: { method: :delete, confirm: '本当に削除しますか?' }
       - elsif user_signed_in?
-        .team_star
+        .team_star.hidden.active-star{id: "active-star#{@team.id}", data: {team_id: @team.id}}
+          = image_tag 'star-yellow.png', size: '25x25'
+        .team_star.hidden.in-active-star{id: "in-active-star#{@team.id}", data: {team_id: @team.id}}
           = image_tag 'star-white.png', size: '25x25'
       .team_name
         %p= @team.team_name
