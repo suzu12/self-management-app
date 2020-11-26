@@ -20,6 +20,11 @@ textarea {
   min-height: 250px;
   resize: vertical;
   border: 1px solid #EBEBEB;
+  
+  &.sm {
+    min-height: 50px;
+    padding: 15px;
+  }
 }
 
 .select-box {
