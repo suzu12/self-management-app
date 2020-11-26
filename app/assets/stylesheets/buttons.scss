@@ -37,3 +37,19 @@
   display: block;
   @extend .common-primary
 }
+
+.btn-comment {
+  background-color: $base-color;
+  border: 2px solid $primary-color;
+  color: $primary-color;
+  border-radius: 10px;
+  width: 100%;
+  padding: 16px 0;
+  text-align: center;
+  letter-spacing: 0.06em;
+  font-weight: bold;
+
+    i {
+      font-weight: bold;
+    }
+}

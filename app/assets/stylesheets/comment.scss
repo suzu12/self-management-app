@@ -1,0 +1,20 @@
+@import './variables';
+
+.comment-list {
+  border-radius: 10px;
+  background-color: $base-color;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0 18px 18px 18px;
+}
+.comment-header {
+  font-size: 18px;
+  padding: 18px;
+  border-bottom: 1px solid rgb(241, 245, 247);
+
+}
+
+.comments-container {
+  margin: 10px 0 20px 20px;
+  overflow-wrap: break-word;
+}

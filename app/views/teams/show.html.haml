@@ -56,3 +56,15 @@
         = f.hidden_field 'team[user_ids][]', value: current_user.id
     - else
       = link_to '仲間と会話を始めよう！', team_chats_path(@team), class: 'join_team'
+
+  .comment-list
+    %h2.comment-header
+      %i.far.fa-comments コメント
+    .comments-container
+
+    .btn-comment.show-comment-form
+      %i.far.fa-comments コメントを書く
+    .comment-text-area.hidden
+      = text_area_tag :comment_content, '', class: 'sm'
+      .btn-comment.add-comment-button
+        コメントを投稿する

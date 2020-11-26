@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :teams do
     resources :chats, only: %i(index create)
     resources :team_users, only: :create
+    resources :comments, only: %i(index create)
     resource :like, only: %i(show create destroy)
   end
   resources :profiles, only: %i(show edit update)
