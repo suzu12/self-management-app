@@ -4,9 +4,9 @@
       .team_image
         = image_tag @team.image if @team.image.attached?
       - if user_signed_in? && current_user.has_made?(@team)
-        .team_setting#set
+        .team_setting
           = image_tag 'setting', size: '25x25'
-          .team_setting_change.hidden#set-list
+          .team_setting_change.hidden
             = link_to '編集する', edit_team_path(@team)
             = link_to '削除する', team_path(@team), data: { method: :delete, confirm: '本当に削除しますか?' }
       - elsif user_signed_in?
