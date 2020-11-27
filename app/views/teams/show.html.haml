@@ -45,10 +45,10 @@
         %p= @team.period.name
 
       .star
-        .star_count
-          現在２人がお気に入りしています。
-        .star_status
-          いいねボタンを配置
+        .star_counter
+          現在
+          %span
+          がいいねをしています。
   - if user_signed_in?
     - unless current_user.has_made?(@team)
       = form_with(url: team_team_users_path(@team), local: true) do |f|
