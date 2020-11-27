@@ -1,9 +1,9 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
 
-const likeCountCalculation = (starCount) => {
+const likeCountCalculation = (likeCount) => {
   $('.star_counter > span').append(
-    `${starCount}人`
+    `${likeCount}人`
   )
 }
 
@@ -17,8 +17,8 @@ const elementInActiveStarLikeGet = () => {
         if ( inActiveStatus === false ) {
           $(element).removeClass('hidden')
         }
-        const starCount = response.data.likeCount
-        likeCountCalculation(starCount)
+        const likeCount = response.data.likeCount
+        likeCountCalculation(likeCount)
       })
   })
 }
@@ -48,9 +48,9 @@ const listenInActiveStarLikeEvent = () => {
         $(`#in-active-star${teamId}`).addClass('hidden');
         $(`#active-star${teamId}`).removeClass('hidden');
       }
-      const starCount = response.data.likeCount
+      const likeCount = response.data.likeCount
       $('.star_counter > span').html('')
-      likeCountCalculation(starCount)
+      likeCountCalculation(likeCount)
     })
     .catch((e) => {
       window.alert('Error')
@@ -70,9 +70,9 @@ const listenActiveStarLikeEvent = () => {
         $(`#active-star${teamId}`).addClass('hidden');
         $(`#in-active-star${teamId}`).removeClass('hidden');
       }
-      const starCount = response.data.likeCount
+      const likeCount = response.data.likeCount
       $('.star_counter > span').html('')
-      likeCountCalculation(starCount)
+      likeCountCalculation(likeCount)
     })
     .catch((e) => {
       window.alert('Error')

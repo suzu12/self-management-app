@@ -1,7 +1,6 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
 
-// 「コメントを書く」を押したら、コメントフォームが出てくる処理
 const handleCommentForm = () => {
   $('.show-comment-form').on('click', () => {
     $('.show-comment-form').addClass('hidden')
@@ -9,10 +8,15 @@ const handleCommentForm = () => {
   })
 }
 
-// コメントされたらコメントをコメント一覧に表示する処理
 const appendNewComment = (comment) => {
   $('.comments-container').append(
     `<div class="teams_comment"><li>${comment.content}</li></div>`
+  )
+}
+
+const appendCommentCount = (commentCount) => {
+  $('.comment-header > p').append(
+    commentCount
   )
 }
 
@@ -25,6 +29,8 @@ const commentDisplayVisibility = () => {
       comments.forEach((comment) => {
         appendNewComment(comment)
       })
+      const commentCount = $('.teams_comment > li').length
+      appendCommentCount(commentCount)
     })
     handleCommentForm()
     $('.add-comment-button').on('click', () => {
@@ -35,10 +41,14 @@ const commentDisplayVisibility = () => {
         axios.post(`/teams/${teamId}/comments`, {
           comment: {content: content}
         })
-          .then((res) => {
-            const comment = res.data
+          .then((response) => {
+            const comment = response.data
             appendNewComment(comment)
             $('#comment_content').val('')
+
+            const commentCount = $('.teams_comment > li').length
+            $('.comment-header > p').html('')
+            appendCommentCount(commentCount)
           })
       }
     })

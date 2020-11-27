@@ -11,7 +11,14 @@
   font-size: 18px;
   padding: 18px;
   border-bottom: 1px solid rgb(241, 245, 247);
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
 
+  p {
+    margin-top: 1px;
+    margin-right: 2px;
+  }
 }
 
 .comments-container {
