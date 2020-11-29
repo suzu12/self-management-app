@@ -3,11 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id])
-    @nickname = @user.nickname
-    @birthday = @user.birthday
-    @gender = @user.gender
-    @bio = @user.bio
+    @profile = current_user.profile
   end
 
   def update
