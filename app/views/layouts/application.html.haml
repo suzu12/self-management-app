@@ -21,7 +21,7 @@
           .pulldown
             = image_tag current_user.icon_image, class: 'header_icon'
             .pulldown_content.hidden
-              = link_to 'プロフィール', profile_path(current_user)
+              = link_to 'プロフィール', profile_path
               = link_to 'お気に入り', root_path
               = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
         - else

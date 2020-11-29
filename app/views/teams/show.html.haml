@@ -19,7 +19,7 @@
     .team_center
       .team_center_icon
         - @team.users.each do |user|
-          = link_to (image_tag(user.icon_image)), profile_path(user.id)
+          = link_to (image_tag(user.icon_image)), account_path(user)
     .team_under
       .team_introduction
         %p= @team.introduction
