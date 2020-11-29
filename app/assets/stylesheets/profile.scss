@@ -24,7 +24,6 @@ $image_size: 56px;
         height: $image_size;
         border-radius: 100%;
         border: 1px solid #000;
-
       }
     }
 
@@ -51,15 +50,29 @@ $image_size: 56px;
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      font-weight: bold;
-  
+      font-weight: 700;
       a {
-        color: $primary-color;
         text-decoration: none;
+        border-radius: 9999px;
+        padding: 10px 15px;
         border: 1px solid $primary-color;
-        border-radius: 10px;
-        padding: 5px;
+        font-size: 15px;
+        line-height: 1;
       }
+
+    }
+
+    &_edit {
+      color: $primary-color;
+    }
+
+    &_followed {
+      color: $base-color;
+      background-color: $primary-color;
+    }
+
+    &_following {
+      color: $primary-color;
     }
   }
 }
