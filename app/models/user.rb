@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_one :profile, dependent: :destroy
+
   has_many :team_users
   has_many :teams, through: :team_users
+
   has_many :chats, dependent: :destroy
   has_many :likes, dependent: :destroy
 

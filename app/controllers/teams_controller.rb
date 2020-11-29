@@ -8,7 +8,6 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
-    @team.users << current_user
   end
 
   def show
@@ -16,10 +15,12 @@ class TeamsController < ApplicationController
   end
 
   def create
-    if current_user.teams.create(team_params)
-      redirect_to root_path, notice: '保存できました！'
+    @team = Team.new(team_params)
+    if @team.save
+      TeamUser.create!(team_id: @team.id, user_id: current_user.id)
+      redirect_to root_path, notice: '作成できました！'
     else
-      flash.now[:error] = '保存に失敗しました'
+      flash.now[:error] = '作成に失敗しました'
       render :new
     end
   end
@@ -43,7 +44,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:category_id, :team_name, :introduction, :period_id, :image, user_ids: [])
+    params.require(:team).permit(:category_id, :team_name, :introduction, :period_id, :image)
   end
 
   def set_team

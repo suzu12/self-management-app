@@ -9,6 +9,11 @@ ja:
     attributes:
       user:
         nickname: 'ニックネーム'
+      team:
+        category_id: 'カテゴリー'
+        team_name: 'チーム名'
+        introduction: '目標期間'
+        period_id: 'チームの説明文'
   date:
     abbr_day_names:
     - 日
