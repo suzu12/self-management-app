@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :team_users, only: :create
     resources :comments, only: %i(index create)
     resource :like, only: %i(show create destroy)
+    collection do
+      get 'search'
+    end
   end
 
   resources :accounts, only: :show do
