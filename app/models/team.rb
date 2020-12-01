@@ -12,13 +12,6 @@ class Team < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  with_options presence: true do
-    validates :category_id
-    validates :team_name, length: { maximum: 15 }
-    validates :period_id
-    validates :introduction, length: { maximum: 400 }
-  end
-
-  validates :category_id, numericality: { other_than: 1, message: 'を選択してください' }
-  validates :period_id, numericality: { other_than: 1, message: 'を選択してください' }
+  has_many :team_tag_relations
+  has_many :tags, through: :team_tag_relations
 end
