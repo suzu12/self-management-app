@@ -17,6 +17,10 @@ import {
   teamSettingChange
 } from 'modules/pulldown_menu'
 
+import {
+  selectingTag
+} from 'modules/tag'
+
 document.addEventListener('DOMContentLoaded', () => {
   headerPulldownMenu()
   teamSettingChange()
@@ -27,4 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   listenActiveStarLikeEvent()
 
   commentDisplayVisibility()
+
+  selectingTag()
 })

@@ -10,6 +10,7 @@ const likeCountCalculation = (likeCount) => {
 const elementInActiveStarLikeGet = () => {
   $('.in-active-star').each(function (index, element) {
     const likeData = $(element).data()
+    if (likeData) {
     const teamId = likeData.teamId
     axios.get(`/teams/${teamId}/like`)
       .then((response) => {
@@ -20,12 +21,14 @@ const elementInActiveStarLikeGet = () => {
         const likeCount = response.data.likeCount
         likeCountCalculation(likeCount)
       })
+    }
   })
 }
 
 const elementActiveStarLikeGet = () => {
   $('.active-star').each(function (index, element) {
     const likeData = $(element).data()
+    if (likeData) {
     const teamId = likeData.teamId
     axios.get(`/teams/${teamId}/like`)
       .then((response) => {
@@ -34,6 +37,7 @@ const elementActiveStarLikeGet = () => {
           $(element).removeClass('hidden')
         }
       })
+    }
   })
 }
 

@@ -13,3 +13,6 @@
     .team_under
       .team_introduction
         %p= teams.introduction
+    %li.tag-list
+      - teams.tags.each do |tag|
+        = "##{tag.name}"

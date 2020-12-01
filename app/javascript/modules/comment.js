@@ -22,36 +22,38 @@ const appendCommentCount = (commentCount) => {
 
 const commentDisplayVisibility = () => {
   const dataset = $('#js-team-data').data()
-  const teamId = dataset.teamId
-  axios.get(`/teams/${teamId}/comments`)
-    .then((response) => {
-      const comments = response.data
-      comments.forEach((comment) => {
-        appendNewComment(comment)
-      })
-      const commentCount = $('.teams_comment > li').length
-      appendCommentCount(commentCount)
-    })
-    handleCommentForm()
-    $('.add-comment-button').on('click', () => {
-      const content = $('#comment_content').val()
-      if (!content) {
-        window.alert('コメントを入力してください')
-      } else {
-        axios.post(`/teams/${teamId}/comments`, {
-          comment: {content: content}
+  if (dataset) {
+    const teamId = dataset.teamId
+    axios.get(`/teams/${teamId}/comments`)
+      .then((response) => {
+        const comments = response.data
+        comments.forEach((comment) => {
+          appendNewComment(comment)
         })
-          .then((response) => {
-            const comment = response.data
-            appendNewComment(comment)
-            $('#comment_content').val('')
-
-            const commentCount = $('.teams_comment > li').length
-            $('.comment-header > p').html('')
-            appendCommentCount(commentCount)
+        const commentCount = $('.teams_comment > li').length
+        appendCommentCount(commentCount)
+      })
+      handleCommentForm()
+      $('.add-comment-button').on('click', () => {
+        const content = $('#comment_content').val()
+        if (!content) {
+          window.alert('コメントを入力してください')
+        } else {
+          axios.post(`/teams/${teamId}/comments`, {
+            comment: {content: content}
           })
-      }
-    })
+            .then((response) => {
+              const comment = response.data
+              appendNewComment(comment)
+              $('#comment_content').val('')
+
+              const commentCount = $('.teams_comment > li').length
+              $('.comment-header > p').html('')
+              appendCommentCount(commentCount)
+            })
+        }
+      })
+  }
 }
 
 export {

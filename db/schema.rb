@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_022259) do
+ActiveRecord::Schema.define(version: 2020_11_30_090852) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,22 @@ ActiveRecord::Schema.define(version: 2020_11_28_022259) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "team_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_team_tag_relations_on_tag_id"
+    t.index ["team_id"], name: "index_team_tag_relations_on_team_id"
+  end
+
   create_table "team_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "team_id"
@@ -119,6 +135,8 @@ ActiveRecord::Schema.define(version: 2020_11_28_022259) do
   add_foreign_key "profiles", "users"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "relationships", "users", column: "following_id"
+  add_foreign_key "team_tag_relations", "tags"
+  add_foreign_key "team_tag_relations", "teams"
   add_foreign_key "team_users", "teams"
   add_foreign_key "team_users", "users"
 end
