@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
   end
 
   def new
-    @team = Team.new
+    @team = TeamsTag.new
   end
 
   def show
@@ -15,9 +15,10 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)
-    if @team.save
-      TeamUser.create!(team_id: @team.id, user_id: current_user.id)
+    @team = TeamsTag.new(team_params)
+    if @team.valid?
+      @team.save
+      TeamUser.create(user_id: current_user.id, team_id: Team.last.id)
       redirect_to root_path, notice: '作成できました！'
     else
       flash.now[:error] = '作成に失敗しました'
@@ -41,10 +42,17 @@ class TeamsController < ApplicationController
     end
   end
 
+  def search
+    return nil if params[:keyword] == ''
+
+    tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: tag }
+  end
+
   private
 
   def team_params
-    params.require(:team).permit(:category_id, :team_name, :introduction, :period_id, :image)
+    params.require(:teams_tag).permit(:category_id, :team_name, :introduction, :period_id, :image, :name)
   end
 
   def set_team
