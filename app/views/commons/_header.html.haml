@@ -1,0 +1,25 @@
+- unless current_page?(new_user_session_path) || current_page?(new_user_registration_path)
+  %header.header
+    .header_left
+      .header_logos
+        - unless current_page?(root_path)
+          = link_to image_tag('back.svg'), :back
+      .header_pageTitle
+        %h1= link_to 'Hello! NewMe', root_path
+    .header_right
+      - if user_signed_in?
+        .pulldown
+          %i.fas.fa-bars
+          .pulldown_content.hidden
+
+            = link_to root_path do
+              %i.fas.fa-users 
+              %p 参加中のチーム
+
+            = link_to destroy_user_session_path, data: { method: 'delete' } do
+              %i.fas.fa-sign-out-alt
+              %p ログアウト
+
+      - else
+        = link_to 'Signup', new_user_registration_path, class: 'header_loginBtn'
+        = link_to 'Login', new_user_session_path, class: 'header_loginBtn'

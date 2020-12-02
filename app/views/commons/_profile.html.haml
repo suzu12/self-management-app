@@ -3,27 +3,33 @@
     .profilePage_user
       .profilePage_user_image
         = image_tag user.icon_image
-      .profilePage_user_info
-        .profilePage_user_name
-          %P= "【ニックネーム】"
-          %p=  user.nickname
-        .profilePage_user_birthday
-          %p= "【年齢】"
-          %p=  user.age || '未入力'
-        .profilePage_user_gender
-          %p= "【性別】"
-          %p= I18n.t("enum.genders.#{user.gender || 'unknown'}")
+      .profilePage_user_team_count
+        %span 2
+        %p マイチーム
+      .profilePage_user_followed_count
+        %span 22
+        %p フォロワー
+      .profilePage_user_following_count
+        %span 23
+        %p フォロー中
+
+
+    .profilePage_user_info
+      #{ user.nickname } / #{I18n.t( "enum.genders.#{user.gender || 'unknown'}") } / #{ user.age || '未入力' }
+
+    .profilePage_user_bio
+      #{ user.bio || '未入力' }
     .profilePage_user_actionButton
       - if user == current_user
-        = link_to '編集する', edit_profile_path, class: 'profilePage_user_edit'
+        = link_to 'プロフィールを編集する', edit_profile_path, class: 'profilePage_user_edit'
       - else
         - if current_user.followed?(user)
           = link_to 'フォロー中', account_unfollows_path(user), data: { method: :post }, class: 'profilePage_user_followed'
         - else
           = link_to 'フォロー', account_follows_path(user), data: { method: :post }, class: 'profilePage_user_following'
-    .profilePage_user_bio
-      %p= '【自己紹介】'
-      %p=  user.bio || '未入力'
+
 
     - user.teams.each do |team|
       = render 'commons/teams', teams: team
+
+    = render 'commons/footer'

@@ -2,30 +2,14 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
-    %title Good Habit
+    %title Hello! NewMe
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}/
   %body
-    %header.header
-      .header_left
-        .header_logos
-          - unless current_page?(root_path) || current_page?(new_user_session_path)
-            = link_to image_tag('back.svg'), :back
-        .header_pageTitle
-          %h1= link_to 'Good Habit', root_path
-      .header_right
-        - if user_signed_in?
-          .pulldown
-            = image_tag current_user.icon_image, class: 'header_icon'
-            .pulldown_content.hidden
-              = link_to 'プロフィール', profile_path
-              = link_to 'お気に入り', root_path
-              = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
-        - else
-          = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+    = render 'commons/header'
     - if flash.present?
       .flash
         - flash.each do |key, value|

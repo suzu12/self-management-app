@@ -10,7 +10,8 @@
       .chat_date
         = l(chat.created_at, format: :chat)
   .mychat
-    .chat_date
+    .mychat_date
       = l(chat.created_at, format: :chat)
-    %p= chat.content
-    = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
+    .mychat_content
+      %p= chat.content
+      = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?

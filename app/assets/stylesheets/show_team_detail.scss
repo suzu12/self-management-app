@@ -19,19 +19,19 @@
   }
 
   &_category {
-    @extend .commons_detail
+    @extend .commons_detail;
   }
 
   &_age_limit {
-    @extend .commons_detail
+    @extend .commons_detail;
   }
 
   &_gender_limit {
-    @extend .commons_detail
+    @extend .commons_detail;
   }
 
   &_period_limit {
-    @extend .commons_detail
+    @extend .commons_detail;
   }
 
 }

@@ -7,15 +7,11 @@
     %div
       = f.file_field :icon
     %div
-      = f.label :bio, '自己紹介'
-    %div
-      = f.text_area :bio
-    %div
       = f.label :gender, '性別'
     %div
       = f.select :gender, Profile.genders.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, {class: 'text'}
     %div
-      = f.label :生年月日
+      = f.label :birthday, '生年月日'
     %div
       .input-birth-wrap
         = raw sprintf(                               |
@@ -29,5 +25,10 @@
             end_year: (Time.now.year - 5),           |
             date_separator: '%s'),                   |
           "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" |
+
+    %div
+      = f.label :bio, '自己紹介'
+    %div
+      = f.text_area :bio
 
     = f.submit '保存', class: 'btn-primary'
