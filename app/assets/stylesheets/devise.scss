@@ -1,0 +1,46 @@
+@import 'variables';
+
+.account-page {
+  margin: 60px auto;
+  padding: 60px;
+}
+
+.account-page__header h2 {
+  font-family: 'billabong';
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  font-size: 55px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.account-page__footer {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+
+  p {
+    color: $text-decoration-color;
+    padding: 0 40px;
+  }
+
+  &:before, &:after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: $text-line-color;
+  }
+
+  &_new_path {
+    color: $text-decoration-color;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.05em;
+
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+    }
+  }
+}
