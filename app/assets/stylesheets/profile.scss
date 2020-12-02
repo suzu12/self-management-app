@@ -1,101 +1,93 @@
 @import './variables';
 
-$image_size: 56px;
+// ------ 共通SCSS ------
+$image_size: 70px;
 
+.commons_counts {
+  span {
+    display: block;
+    text-align: center;
+  }
+  p {
+    color: $text-decoration-color;
+  }
+}
+
+.user_page_switch {
+  width: 100%;
+  text-align: center;
+}
+
+// ------ プロフィールユーザー ------
 .profilePage {
-  margin-top: 20px;
-  background-color: $base-color;
-  border-radius: 10px;
   padding: 16px 24px;
 
-
   &_user {
-    margin: 20px 0 0;
-    padding-bottom: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 15px;
 
     &_image {
-      padding: 16px;
-
       img {
         width: $image_size;
         height: $image_size;
         border-radius: 100%;
-        border: 1px solid #000;
       }
     }
 
-    &_name {
-      display: flex;
+    // ------ ユーザーデータ ------
+
+    &_team_count {
+      @extend .commons_counts;
     }
-    &_birthday {
-      display: flex;
+
+    &_followed_count {
+      @extend .commons_counts;
     }
-    &_gender {
-      display: flex;
+
+    &_following_count {
+      @extend .commons_counts;
     }
+
+    &_info {
+      font-size: 17px;
+    }
+
     &_bio {
+      margin: 15px 0;
       overflow-wrap: break-word;
-      border-bottom: 1px solid rgb(241, 245, 247);
-      display: flex;
-      flex-direction: column;
-      p {
-        margin-bottom: 16px;
-      }
+      font-size: 14px;
     }
+
     &_actionButton {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
+      margin-bottom: 25px;
       a {
-        text-decoration: none;
-        border-radius: 9999px;
-        padding: 10px 15px;
-        border: 1px solid $primary-color;
-        font-size: 15px;
         line-height: 1;
+        font-size: 15px;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 10px;
+        border: 1px solid $text-decoration-color;
       }
-
     }
 
     &_edit {
+      @extend .user_page_switch;
       color: $primary-color;
     }
 
-    &_followed {
+    &_followed { 
+      @extend .user_page_switch;
       color: $base-color;
       background-color: $primary-color;
     }
 
     &_following {
+      @extend .user_page_switch;
       color: $primary-color;
     }
   }
-}
-
-.input-birth-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-}
-
-.input-birth-wrap>select {
-  width: 75px;
-  margin-top: 5px;
-  height: 45px;
-  padding-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.input-birth-wrap>p {
-  line-height: 60px;
-  padding: 0 5px;
 }
