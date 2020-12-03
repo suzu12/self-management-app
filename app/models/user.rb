@@ -11,11 +11,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :favorite_teams, through: :likes, source: :team
 
-  has_many :following_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followings, through: :following_relationships, source: :following
+  has_many :following_relationships, class_name: 'Relationship', foreign_key: 'following_id', dependent: :destroy
+  has_many :followings, through: :following_relationships, source: :follower
 
-  has_many :follower_relationships, class_name: 'Relationship', foreign_key: 'following_id', dependent: :destroy
-  has_many :followers, through: :follower_relationships, source: :follower
+  has_many :follower_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followers, through: :follower_relationships, source: :following
 
   validates :nickname, presence: true
 
@@ -31,14 +31,6 @@ class User < ApplicationRecord
     teams.exists?(id: team.id)
   end
 
-  def icon_image
-    if profile&.icon&.attached?
-      profile.icon
-    else
-      'default.png'
-    end
-  end
-
   def which_profile
     profile || build_profile
   end
@@ -48,11 +40,11 @@ class User < ApplicationRecord
   end
 
   def follow!(user)
-    following_relationships.create!(following_id: user.id)
+    following_relationships.create!(follower_id: user.id)
   end
 
   def unfollow!(user)
-    following_relationships.find_by!(following_id: user.id).destroy!
+    following_relationships.find_by!(follower_id: user.id).destroy!
   end
 
   def followed?(user)
