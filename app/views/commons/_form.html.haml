@@ -34,4 +34,5 @@
     %div
       = f.text_area :introduction, placeholder: 'みんなで仲良くやっていきましょう！！毎日楽しくをモットーにしているチームです！'
 
+    %input{name: "teams_tag[user_id]", type: "hidden", value: "#{current_user.id}"}/
     = f.submit 'チームを作る', class: 'btn-primary'

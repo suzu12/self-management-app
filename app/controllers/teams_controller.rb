@@ -18,7 +18,6 @@ class TeamsController < ApplicationController
     @team = TeamsTag.new(team_params)
     if @team.valid?
       @team.save
-      TeamUser.create(user_id: current_user.id, team_id: Team.last.id)
       redirect_to root_path, notice: '作成できました！'
     else
       flash.now[:error] = '作成に失敗しました'
@@ -52,7 +51,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:teams_tag).permit(:category_id, :team_name, :introduction, :period_id, :image, :name)
+    params.require(:teams_tag).permit(:category_id, :team_name, :introduction, :period_id, :image, :name).merge(user_id: current_user.id)
   end
 
   def set_team

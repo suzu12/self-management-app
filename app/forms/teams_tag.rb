@@ -1,7 +1,7 @@
 class TeamsTag
   include ActiveModel::Model
 
-  attr_accessor :category_id, :team_name, :introduction, :period_id, :image, :name
+  attr_accessor :category_id, :team_name, :introduction, :period_id, :image, :name, :user_id
 
   with_options presence: true do
     validates :category_id
@@ -9,6 +9,7 @@ class TeamsTag
     validates :period_id
     validates :introduction, length: { maximum: 400 }
     validates :name
+    validates :user_id
   end
 
   validates :category_id, numericality: { other_than: 1, message: 'を選択してください' }
@@ -21,5 +22,7 @@ class TeamsTag
     tag.save
 
     TeamTagRelation.create(team_id: team.id, tag_id: tag.id)
+
+    TeamUser.create!(team_id: team.id, user_id: user_id)
   end
 end
