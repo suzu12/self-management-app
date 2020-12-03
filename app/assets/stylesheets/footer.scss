@@ -12,8 +12,10 @@
   justify-content: space-around;
   align-items: center;
 
+  &_item {
+  }
+
   a {
-    color: $base-color;
     font-size: 20px;
     padding: 15px 20px;
     display: block;
@@ -21,5 +23,9 @@
 
   i {
     margin-bottom: 10px;
+    color: $base-color;
+    &.active {
+      color: $secondary-color;
+    }
   }
 }
