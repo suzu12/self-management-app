@@ -1,17 +1,20 @@
 .chat
-  .chat_user
-    .chat_user_icon
-      = image_tag(chat.user.icon_image)
-      %p= chat.user.nickname
-    .chat_user_message
-      .chat_content
-        %p= chat.content
-        = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
-      .chat_date
-        = l(chat.created_at, format: :chat)
-  .mychat
-    .mychat_date
-      = l(chat.created_at, format: :chat)
-    .mychat_content
-      %p= chat.content
-      = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
+  - if user_signed_in?
+    - unless current_user.id == chat.user_id
+      .chat_user
+        .chat_user_icon
+          = image_tag(chat.user.icon_image)
+          %p= chat.user.nickname
+        .chat_user_message
+          .chat_content
+            %p= chat.content
+            = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
+          .chat_date
+            = l(chat.created_at, format: :chat)
+    - else
+      .mychat
+        .mychat_date
+          = l(chat.created_at, format: :chat)
+        .mychat_content
+          %p= chat.content
+          = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
