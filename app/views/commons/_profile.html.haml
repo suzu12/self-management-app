@@ -4,13 +4,13 @@
       .profilePage_user_image
         = image_tag user.icon_image
       .profilePage_user_team_count
-        %span 2
+        %span= current_user.team_count
         %p マイチーム
       .profilePage_user_followed_count
-        %span 22
+        %span= current_user.follower_count
         %p フォロワー
       .profilePage_user_following_count
-        %span 23
+        %span= current_user.following_count
         %p フォロー中
 
 

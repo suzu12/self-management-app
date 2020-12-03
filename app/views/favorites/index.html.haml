@@ -1,5 +1,5 @@
 .container
-  %h2 お気に入りのチームを探そう！
-  - @teams.each do |team|
-    = render 'commons/teams', teams: team
+  .subtitle
+    %h2 お気に入り
+    = render partial: 'commons/teams', collection: @teams
     = render 'commons/footer'
