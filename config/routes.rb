@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i(show edit update)
+  resources :favorites, only: %i(index)
 end

@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :chats, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :favorite_teams, through: :likes, source: :team
 
   has_many :following_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followings, through: :following_relationships, source: :following
