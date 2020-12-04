@@ -23,6 +23,9 @@
     .team_under
       .team_introduction
         %p= @team.introduction
+    %li.tag-list
+      - @team.tags.each do |tag|
+        = "##{tag.name}"
     .detail
       .detail_update
         %p 最終更新
