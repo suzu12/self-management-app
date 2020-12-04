@@ -25,8 +25,13 @@ class TeamsController < ApplicationController
     end
   end
 
+  def edit
+    @tag = @team.tags.pluck(:name).join(',')
+  end
+
   def update
-    if @team.update(team_params)
+    if @team.update(update_team_params)
+      @team.update_tags(params[:team][:name].split(','))
       redirect_to team_path(@team), notice: '編集できました！'
     else
       flash.now[:error] = '編集に失敗しました'
@@ -36,7 +41,8 @@ class TeamsController < ApplicationController
 
   def destroy
     if user_signed_in? && current_user.has_made?(@team)
-      @team.destroy!
+      team = TeamTagRelation.find_by(team_id: @team)
+      team.destroy
       redirect_to root_path, notice: '削除することができました！'
     end
   end
@@ -52,6 +58,10 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:teams_tag).permit(:category_id, :team_name, :introduction, :period_id, :image, :name).merge(user_id: current_user.id)
+  end
+
+  def update_team_params
+    params.require(:team).permit(:category_id, :team_name, :introduction, :period_id, :image)
   end
 
   def set_team

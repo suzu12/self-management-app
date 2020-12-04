@@ -1,1 +1,2 @@
-= render 'commons/form', team: @team
+= render partial: 'commons/form', locals: { url: team_path(@team.id), method: :patch }
+= render 'commons/footer'
