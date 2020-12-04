@@ -1,6 +1,5 @@
 class TeamsTag
   include ActiveModel::Model
-
   attr_accessor :category_id, :team_name, :introduction, :period_id, :image, :name, :user_id
 
   with_options presence: true do
@@ -17,12 +16,18 @@ class TeamsTag
 
   def save
     team = Team.create(category_id: category_id, team_name: team_name, introduction: introduction, period_id: period_id, image: image)
+    tags = split_tag_list.map { |name| Tag.find_or_create_by(name: name) }
 
-    tag = Tag.where(name: name).first_or_initialize
-    tag.save
+    tags.each do |tag|
+      TeamTagRelation.create(team_id: team.id, tag_id: tag.id)
+    end
 
-    TeamTagRelation.create(team_id: team.id, tag_id: tag.id)
+    TeamUser.create(team_id: team.id, user_id: user_id)
+  end
 
-    TeamUser.create!(team_id: team.id, user_id: user_id)
+  private
+
+  def split_tag_list
+    name.split(',')
   end
 end
