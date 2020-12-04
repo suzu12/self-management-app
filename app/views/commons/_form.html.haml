@@ -1,5 +1,5 @@
 .container
-  = form_with(model: @team, url: teams_path, local: true) do |f|
+  = form_with(model: @team, url: url, method: method, local: true) do |f|
     = render 'commons/error_messages', model: f.object
 
     %div
@@ -21,11 +21,11 @@
       = f.label :period_id, '目標期間'
     %div
       = f.collection_select(:period_id, Period.all, :id, :name, {}, {class:"select-box", id:"period"})
-            
+
     %div
       = f.label :name, 'タグ'
     %div
-      = f.text_field :name, placeholder: '(例 初心者歓迎 朝活)', class: 'text'
+      = f.text_field :name, placeholder:"複数つけるには','で区切ってください。 (例 初心者歓迎 朝活)", class: 'text', value: @tag
 
     #search-result
 
@@ -35,4 +35,4 @@
       = f.text_area :introduction, placeholder: 'みんなで仲良くやっていきましょう！！毎日楽しくをモットーにしているチームです！'
 
     %input{name: "teams_tag[user_id]", type: "hidden", value: "#{current_user.id}"}/
-    = f.submit 'チームを作る', class: 'btn-primary'
+    = f.submit 'このルールでこれから頑張る！', class: 'btn-primary'
