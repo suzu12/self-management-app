@@ -1,4 +1,5 @@
 .container
-  = render partial: 'commons/search'
+  = render 'commons/search'
   = render partial: 'commons/teams', collection: @teams
+  = render partial: 'commons/teams', collection: @tags
   = render 'commons/footer'
