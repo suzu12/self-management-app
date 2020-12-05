@@ -21,6 +21,11 @@ import {
   selectingTag
 } from 'modules/tag'
 
+import {
+  previewFormImage,
+  previewChatImage
+} from 'modules/preview'
+
 document.addEventListener('DOMContentLoaded', () => {
   headerPulldownMenu()
   teamSettingChange()
@@ -33,4 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   commentDisplayVisibility()
 
   selectingTag()
+
+  previewFormImage()
+  previewChatImage()
 })

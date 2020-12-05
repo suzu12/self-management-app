@@ -1,11 +1,13 @@
 .container
   = form_with(model: @team, url: url, method: method, local: true) do |f|
     = render 'commons/error_messages', model: f.object
-
-    %div
-      = f.label :image, 'ヘッダー画像'
-    %div
-      = f.file_field :image
+    .image_container
+      %div
+        = f.label :image, 'ヘッダー画像'
+      %div
+        = f.file_field :image, id: 'team_image'
+      .image_list
+        = image_tag @team.image, id: 'image' if @team.image.present?
 
     %div
       = f.label :category_id, 'カテゴリー'

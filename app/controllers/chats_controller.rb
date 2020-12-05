@@ -10,7 +10,7 @@ class ChatsController < ApplicationController
   def create
     @team = Team.find(params[:team_id])
     @chat = @team.chats.new(chat_params)
-    if @chat.save!
+    if @chat.save
       redirect_to team_chats_path(@team)
     else
       @chats = @team.chats.includes(:user)

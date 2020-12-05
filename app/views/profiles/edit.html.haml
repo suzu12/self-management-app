@@ -1,11 +1,13 @@
 .container
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     = render 'commons/error_messages', model: f.object
-    
-    %div
-      = f.label :icon, 'アイコン'
-    %div
-      = f.file_field :icon
+    .image_container
+      %div
+        = f.label :icon, 'アイコン'
+      %div
+        = f.file_field :icon, id: 'team_image'
+      .image_list
+        = image_tag current_user.icon_image, id: 'image' if current_user.icon_image.present?
     %div
       = f.label :gender, '性別'
     %div
@@ -32,3 +34,4 @@
       = f.text_area :bio
 
     = f.submit '保存', class: 'btn-primary'
+= render 'commons/footer'

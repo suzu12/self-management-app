@@ -131,3 +131,18 @@
     font-weight: bold;
   }
 }
+
+// ------ イメージのプレビュー表示 ------
+.image_container {
+  margin-bottom: 28px;
+  position: relative;
+}
+.image_list {
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
