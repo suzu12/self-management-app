@@ -101,3 +101,21 @@
     display: inline;
   }
 }
+
+// ------ 画像のサイズ ------
+
+.chat_image {
+  width: 250px;
+  height: auto;
+}
+
+.mychat_image {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  img {
+    display: inline-block;
+    width: 150px;
+    height: auto;
+  }
+}
