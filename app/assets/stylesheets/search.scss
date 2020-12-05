@@ -1,0 +1,59 @@
+@import './variables';
+
+$border-color:#007fff;
+
+.common_style {
+  height: 29px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.search_nav{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 100%;
+  height: 35px;
+  &_left {
+    @extend .common_style;
+    border-radius: 12px 0 0 12px;
+    display: block;
+    font-weight: bold;
+    width: auto;
+    border-top: 2px solid $border-color;
+    border-right: 1px solid $border-color;
+    border-bottom: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+    color: #333;
+    outline: 0;
+    padding-left: 12px;
+  }
+
+  &_fill {
+    @extend .common_style;
+    display: block;
+    font-weight: bold;
+    width: 200px;
+    padding: 0 12px;
+    border-top: 2px solid $border-color;
+    border-right: 2px solid $border-color;
+    border-bottom: 2px solid $border-color;
+    border-left: 1px solid $border-color;
+    color: #333;
+    outline: 0;
+  }
+
+  &_right {
+    @extend .common_style;
+    border-radius: 0 12px 12px 0;
+    padding: 6px 10px;
+    border: none;
+    background: $border-color;
+    color: $base-color;
+    cursor: pointer;
+    i {
+      cursor: pointer;
+    }
+  }
+}

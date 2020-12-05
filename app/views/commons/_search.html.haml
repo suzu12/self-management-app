@@ -1,0 +1,8 @@
+= form_with(url: filtering_searchs_path, local: true, method: :get) do |f|
+  .search_nav
+    = f.collection_select(:category_id, Category.where.not(id: 1), :id, :name, {include_blank: 'すべてのカテゴリー'}, {class:"search_nav_left"})
+    = f.text_field :search, placeholder: "キーワードから探す", class: "search_nav_fill"
+    .search_nav_right
+      = f.label :name do
+        %i.fas.fa-search
+        = f.submit id: 'name',class: 'hidden'

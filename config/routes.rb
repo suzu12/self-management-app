@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'teams#index'
   resource :timeline, only: %i(show)
+  resources :filtering_searchs, only: %i(index)
 
   resources :teams do
     resources :chats, only: %i(index create)
