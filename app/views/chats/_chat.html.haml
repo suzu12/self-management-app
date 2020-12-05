@@ -8,7 +8,7 @@
         .chat_user_message
           .chat_content
             %p= chat.content
-            = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
+            = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
           .chat_date
             = l(chat.created_at, format: :chat)
     - else
@@ -17,4 +17,4 @@
           = l(chat.created_at, format: :chat)
         .mychat_content
           %p= chat.content
-          = image_tag chat.photo.variant(resize: '300 x 300'), class: 'chat_image' if chat.photo.attached?
+          = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
