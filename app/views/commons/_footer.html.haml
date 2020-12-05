@@ -4,7 +4,7 @@
       %i.fas.fa-home{class: "#{add_active_class(timeline_path)}"}
   .footer_item
     = link_to root_path do
-      %i.fas.fa-search{class: "#{add_active_class(root_path)}"}
+      %i.fas.fa-search{class: "#{add_active_class(root_path) || add_active_class(filtering_searchs_path)}"}
   .footer_item
     = link_to new_team_path do
       %i.far.fa-plus-square{class: "#{add_active_class(new_team_path)}"}
