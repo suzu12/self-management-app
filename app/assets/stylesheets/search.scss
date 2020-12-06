@@ -19,11 +19,11 @@
     display: block;
     font-weight: bold;
     width: auto;
-    border-top: 2px solid $primary-color;
-    border-right: 1px solid $primary-color;
-    border-bottom: 2px solid $primary-color;
-    border-left: 2px solid $primary-color;
-    color: $text-decoration-color;
+    border-top: 2px solid $sending-button;
+    border-right: 1px solid $sending-button;
+    border-bottom: 2px solid $sending-button;
+    border-left: 2px solid $sending-button;
+    color: $text-base-color;
     outline: 0;
     padding-left: 12px;
   }
@@ -34,11 +34,11 @@
     font-weight: bold;
     width: 200px;
     padding: 0 12px;
-    border-top: 2px solid $primary-color;
-    border-right: 2px solid $primary-color;
-    border-bottom: 2px solid $primary-color;
-    border-left: 1px solid $primary-color;
-    color: $text-decoration-color;
+    border-top: 2px solid $sending-button;
+    border-right: 2px solid $sending-button;
+    border-bottom: 2px solid $sending-button;
+    border-left: 1px solid $sending-button;
+    color: $text-base-color;
     outline: 0;
   }
 
@@ -47,7 +47,7 @@
     border-radius: 0 12px 12px 0;
     padding: 6px 10px;
     border: none;
-    background: $primary-color;
+    background: $sending-button;
     color: $base-color;
     cursor: pointer;
     i {
