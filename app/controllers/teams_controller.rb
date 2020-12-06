@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    if user_signed_in? && current_user.has_made?(@team)
+    if user_signed_in? && current_user.id == current_user.team_creator?(@team)
       team = TeamTagRelation.find_by(team_id: @team)
       team.destroy
       redirect_to root_path, notice: '削除することができました！'

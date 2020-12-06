@@ -27,8 +27,12 @@ class User < ApplicationRecord
 
   delegate :birthday, :age, :gender, :bio, to: :profile, allow_nil: true
 
-  def has_made?(team)
+  def has_entry?(team)
     teams.exists?(id: team.id)
+  end
+
+  def team_creator?(team)
+    team_user = TeamUser.where(team_id: team.id).pluck(:user_id).first
   end
 
   def which_profile
