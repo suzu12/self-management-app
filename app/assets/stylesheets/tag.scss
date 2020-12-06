@@ -1,6 +1,8 @@
+@import 'variables';
+
 .tag-list {
   list-style: none;
   padding: 15px;
-  color: #000;
+  color: $text-base-color;
   font-size: 15px;
 }

@@ -1,7 +1,9 @@
+@import 'variables';
+
 .commons_detail {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid rgb(241, 245, 247);
+  border-bottom: 2px solid $text-line-color;
   padding: 10px 0;
 }
 
@@ -13,8 +15,8 @@
   &_update {
     display: flex;
     justify-content: space-between;
-    border-top: 2px solid rgb(241, 245, 247);
-    border-bottom: 2px solid rgb(241, 245, 247);
+    border-top: 2px solid $text-line-color;
+    border-bottom: 2px solid $text-line-color;
     padding: 10px 0;
   }
 
