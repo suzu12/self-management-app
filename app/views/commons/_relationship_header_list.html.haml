@@ -1,0 +1,10 @@
+.relationship
+  .relationship_half
+    = link_to account_follower_list_path do
+      .relationship_follower{class: "#{add_active_class(account_follower_list_path)}"}
+        %span= account.follower_count
+        %p フォロワー
+    = link_to account_following_list_path do
+      .relationship_following{class: "#{add_active_class(account_following_list_path)}"}
+        %span= account.following_count
+        %p フォロー中

@@ -1,0 +1,91 @@
+@import './variables';
+
+// ------ 共通SCSS ------
+.header_list_style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: $text-decoration-color;
+  width: 100%;
+  border-bottom: 1px solid $text-decoration-color;
+  &.active {
+    border-bottom: 1px solid #000;
+    color: #000;
+    font-weight: bold;
+  }
+  p {
+    margin-left: 5px;
+  }
+}
+
+// ------ リレーションシップのヘッダー ------
+.relationship {
+  margin-bottom: 25px;
+  &_half {
+    display: flex;
+    justify-content: space-around;
+    a {
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+
+  &_follower {
+    @extend .header_list_style;
+  }
+
+  &_following{
+    @extend .header_list_style;
+  }
+
+// ------ リレーションシップのリスト内 ------
+  &_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    a {
+      text-decoration: none;
+    }
+  }
+  &_left {
+    display: flex;
+    align-items: center;
+  }
+
+  &_icon_image {
+    margin-right: 10px;
+    img {
+      border-radius: 100%;
+      border: 1px solid $icon-image-border;
+      padding: 5px;
+    }
+  }
+
+  &_display_name {
+    color: $text-base-color;
+  }
+
+  &_actionButton {
+    border: 1px solid $text-decoration-color;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+  }
+}
+
+.following {
+  color: $base-color;
+  background-color: $sending-button;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.followers {
+  color: $text-base-color;
+  background-color: $base-color;
+  padding: 5px 10px;
+  border: 1px solid $text-decoration-color;
+  border-radius: 10px;
+}

@@ -1,0 +1,13 @@
+= link_to account_path(user) do
+  .relationship_list
+    .relationship_left
+      .relationship_icon_image
+        = image_tag(user.icon_image)
+      .relationship_display_name
+        = user.nickname
+    .relationship_right
+      .relationship_actionButton
+        - if @account.followed?(user)
+          = link_to 'フォロー中', account_unfollows_path(user), data: { method: :post }, class: 'following'
+        - else
+          = link_to 'フォロー', account_follows_path(user), data: { method: :post }, class: 'followers'

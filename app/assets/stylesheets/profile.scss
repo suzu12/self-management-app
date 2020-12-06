@@ -11,6 +11,10 @@ $image_size: 70px;
   p {
     color: $text-decoration-color;
   }
+  a {
+    text-decoration: none;
+    color: $text-base-color;
+  }
 }
 
 .user_page_switch {
@@ -34,6 +38,8 @@ $image_size: 70px;
         width: $image_size;
         height: $image_size;
         border-radius: 100%;
+        border: 1px solid $icon-image-border;
+        padding: 5px;
       }
     }
 
@@ -76,7 +82,7 @@ $image_size: 70px;
 
     &_edit {
       @extend .user_page_switch;
-      color: $primary-color;
+      color: $text-base-color;
     }
 
     &_followed { 
@@ -87,7 +93,7 @@ $image_size: 70px;
 
     &_following {
       @extend .user_page_switch;
-      color: $primary-color;
+      color: $text-base-color;
     }
   }
 }

@@ -1,0 +1,7 @@
+.container
+  = render 'commons/relationship_header_list', account: @account
+  - if @users.present?
+    = render partial: 'commons/relationship_list', collection: @users, as: :user
+  - else
+    %h2 フォロワーがいません。
+= render 'commons/footer'

@@ -3,7 +3,7 @@
     .team_top
       .team_image
         = image_tag @team.image if @team.image.attached?
-      - if user_signed_in? && current_user.has_made?(@team)
+      - if user_signed_in? && current_user.id == current_user.team_creator?(@team)
         .team_setting
           = image_tag 'setting', size: '25x25'
           .team_setting_change.hidden
@@ -53,7 +53,7 @@
           %span
           がいいねをしています。
   - if user_signed_in?
-    - unless current_user.has_made?(@team)
+    - unless current_user.has_entry?(@team)
       = form_with(url: team_team_users_path(@team), local: true) do |f|
         = f.submit "このチームに参加する！", class: 'btn-primary'
         = f.hidden_field 'team[user_ids][]', value: current_user.id

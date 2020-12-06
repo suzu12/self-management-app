@@ -1,6 +1,8 @@
 @import './variables';
 
 // ------ 共通SCSS ------
+$sending-chat: #fff001;
+
 .content_type {
   display: inline-block;
   position: relative; 
@@ -79,7 +81,7 @@
 
 .mychat {
   &_content {
-    background: $secondary-color;
+    background: $sending-chat;
     @extend .content_type;
     &:after {
       content: "";
@@ -88,7 +90,7 @@
       top: 3px; 
       right: -19px;
       border: 8px solid transparent;
-      border-left: 18px solid $secondary-color;
+      border-left: 18px solid $sending-chat;
       -webkit-transform: rotate(-35deg);
       transform: rotate(-35deg);
     }
