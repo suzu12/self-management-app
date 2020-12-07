@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit]
 
   def index
     @teams = Team.all.order('created_at DESC')
@@ -66,5 +67,9 @@ class TeamsController < ApplicationController
 
   def set_team
     @team = Team.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in? && current_user.id == current_user.team_creator?(@team)
   end
 end
