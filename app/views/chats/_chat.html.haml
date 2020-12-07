@@ -10,11 +10,11 @@
             %p= chat.content
             = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
           .chat_date
-            = l(chat.created_at, format: :chat)
+            = I18n.l(Time.zone.now , format: :short)
     - else
       .mychat
         .mychat_date
-          = l(chat.created_at, format: :chat)
+          = I18n.l(Time.zone.now , format: :short)
         .mychat_content
           %p= chat.content
           = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
