@@ -24,7 +24,7 @@ const commentDisplayVisibility = () => {
   const dataset = $('#js-team-data').data()
   if (dataset) {
     const teamId = dataset.teamId
-    axios.get(`/teams/${teamId}/comments`)
+    axios.get(`/api/teams/${teamId}/comments`)
       .then((response) => {
         const comments = response.data
         comments.forEach((comment) => {
@@ -39,7 +39,7 @@ const commentDisplayVisibility = () => {
         if (!content) {
           window.alert('コメントを入力してください')
         } else {
-          axios.post(`/teams/${teamId}/comments`, {
+          axios.post(`/api/teams/${teamId}/comments`, {
             comment: {content: content}
           })
             .then((response) => {

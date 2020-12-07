@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < Api::ApplicationController
   before_action :set_comment
 
   def index
