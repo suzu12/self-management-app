@@ -1,12 +1,15 @@
 .container
   .chat_header
     = @team.team_name
+  .error-alert
+    %ul
+      - @chat.errors.full_messages.each do |message|
+        %li.error-message= message
   .chats
     = render partial: 'chat', collection: @chats
   .mychat_image
 
   = form_with(model: [@team, @chat], class: 'form', local: true) do |f|
-    = render 'commons/error_messages', model: f.object
     .form-input
       %label.form-image
         = image_tag 'photo.png'
