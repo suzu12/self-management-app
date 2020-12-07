@@ -7,7 +7,7 @@
       %div
         = f.file_field :image, id: 'team_image'
       .image_list
-        = image_tag @team.image, id: 'image' if @team.image.present?
+        = image_tag(@team.image) if @team.image.present?
 
     %div
       = f.label :category_id, 'カテゴリー'
