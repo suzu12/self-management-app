@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class Api::LikesController < Api::ApplicationController
   before_action :authenticate_user!
   before_action :set_like
   before_action :like_counts

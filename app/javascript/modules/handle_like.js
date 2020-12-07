@@ -12,7 +12,7 @@ const elementInActiveStarLikeGet = () => {
     const likeData = $(element).data()
     if (likeData) {
     const teamId = likeData.teamId
-    axios.get(`/teams/${teamId}/like`)
+    axios.get(`/api/teams/${teamId}/like`)
       .then((response) => {
         const inActiveStatus = response.data.hasLiked
         if ( inActiveStatus === false ) {
@@ -30,7 +30,7 @@ const elementActiveStarLikeGet = () => {
     const likeData = $(element).data()
     if (likeData) {
     const teamId = likeData.teamId
-    axios.get(`/teams/${teamId}/like`)
+    axios.get(`/api/teams/${teamId}/like`)
       .then((response) => {
         const activeStatus = response.data.hasLiked
         if ( activeStatus === true) {
@@ -46,7 +46,7 @@ const listenInActiveStarLikeEvent = () => {
     e.preventDefault()
     const dataset = $(e.currentTarget).data()
     const teamId = dataset.teamId
-    axios.post(`/teams/${teamId}/like`)
+    axios.post(`/api/teams/${teamId}/like`)
     .then((response) => {
       if (response.data.status === 'ok') {
         $(`#in-active-star${teamId}`).addClass('hidden');
@@ -68,7 +68,7 @@ const listenActiveStarLikeEvent = () => {
     e.preventDefault();
     const dataset = $(e.currentTarget).data()
     const teamId = dataset.teamId
-    axios.delete(`/teams/${teamId}/like`)
+    axios.delete(`/api/teams/${teamId}/like`)
     .then((response) => {
       if (response.data.status === 'ok') {
         $(`#active-star${teamId}`).addClass('hidden');
