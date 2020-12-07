@@ -9,6 +9,7 @@ class TeamsTag
     validates :introduction, length: { maximum: 400 }
     validates :name
     validates :user_id
+    validates :image
   end
 
   validates :category_id, numericality: { other_than: 1, message: 'を選択してください' }
