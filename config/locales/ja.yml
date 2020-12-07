@@ -14,6 +14,22 @@ ja:
         team_name: 'チーム名'
         introduction: '目標期間'
         period_id: 'チームの説明文'
+      chat:
+        content: チャット
+        photo: 写真
+      profile:
+        bio: '自己紹介'
+        birthday: '生年月日'
+        gender: '性別'
+  activemodel:
+    attributes:
+      teams_tag:
+        category_id: 'カテゴリー'
+        team_name: 'チーム名'
+        period_id: '目標期間'
+        introduction: 'チームの説明文'
+        name: 'タグ'
+        image: 'ヘッダー画像'
   date:
     abbr_day_names:
     - 日
@@ -210,6 +226,5 @@ ja:
     formats:
       default: "%Y/%m/%d"
       long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"
-      chat: "%H:%M"
+      short: "%H:%M"
     pm: 午後
