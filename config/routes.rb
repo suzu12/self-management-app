@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'teams#index'
-  resource :timeline, only: %i(show)
   resources :filtering_searchs, only: %i(index)
 
   resources :teams do
@@ -19,8 +18,12 @@ Rails.application.routes.draw do
     resource :following_list, only: %i(show)
     resource :follower_list, only: %i(show)
   end
-  resource :profile, only: %i(show edit update)
-  resources :favorites, only: %i(index)
+
+  scope module: :apps do
+    resource :timeline, only: %i(show)
+    resource :profile, only: %i(show edit update)
+    resources :favorites, only: %i(index)
+  end
 
   namespace :api, default: {format: :json} do
     scope '/teams/:team_id' do
