@@ -3,7 +3,7 @@ module UserDecorator
     if profile&.icon&.attached?
       profile.icon
     else
-      'default.png'
+      'default.svg'
     end
   end
 

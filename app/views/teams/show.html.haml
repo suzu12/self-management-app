@@ -52,13 +52,15 @@
           現在
           %span
           がいいねをしています。
-  - if user_signed_in?
-    - unless current_user.has_entry?(@team)
-      = form_with(url: team_team_users_path(@team), local: true) do |f|
-        = f.submit "このチームに参加する！", class: 'btn-primary'
-        = f.hidden_field 'team[user_ids][]', value: current_user.id
-    - else
-      = link_to '仲間と会話を始めよう！', team_chats_path(@team), class: 'join_team'
+  - if user_signed_in? && current_user.has_entry?(@team)
+    = link_to '仲間と会話を始めよう！', team_chats_path(@team), class: 'join_team'
+  - elsif @team.capacity?
+    .capacity_team
+      = link_to 'このチームは満員です', team_path(@team), data: { confirm: '人数は5人までです' }
+  - else
+    = form_with(url: team_team_users_path(@team), local: true) do |f|
+      = f.submit "このチームに参加する！", class: 'btn-primary'
+      = f.hidden_field 'team[user_ids][]', value: current_user.id
 
   .comment-list
     %h2.comment-header

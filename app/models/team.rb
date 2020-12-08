@@ -29,4 +29,8 @@ class Team < ApplicationRecord
       tags << teams_tag
     end
   end
+
+  def capacity?
+    users.count >= 5
+  end
 end

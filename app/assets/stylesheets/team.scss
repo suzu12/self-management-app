@@ -90,21 +90,13 @@
   &_center {
     display: flex;
     justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-
     &_icon {
-      padding: 25px;
-      position: absolute;
-
       img {
-        width: 56px;
-        height: 56px;
+        width: 50px;
+        height: 50px;
         border-radius: 100%;
         margin: 0 10px 0 0;
-        border: 1px solid $icon-image-border;
-        padding: 5px;
+        border: 1px solid $base-color;
       }
     }
   }
