@@ -10,6 +10,10 @@
           = image_tag 'star-white.png', size: '25x25'
       .team_name
         %p= teams.team_name
+    .team_center
+      .team_center_icon
+        - teams.users.each do |user|
+          = link_to (image_tag(user.icon_image)), account_path(user)
     .team_under
       .team_introduction
         %p= teams.introduction
