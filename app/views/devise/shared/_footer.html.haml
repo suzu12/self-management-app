@@ -1,12 +1,21 @@
 - if current_page?(new_user_session_path)
-  .account-page__footer
+  .account_page__footer
     %p または
-  .account-page__footer_new_path
+  .account_page__footer__google
+    = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+      = image_tag('google-icon.svg')
+      %p Googleでログイン
+  .account_page__footer_new_path
     %p アカウントを持っていない場合
     = link_to '登録はこちら', new_user_registration_path
+
 - else
-  .account-page__footer
+  .account_page__footer
     %p または
-  .account-page__footer_new_path
+  .account_page__footer__google
+    = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
+      = image_tag('google-icon.svg')
+      %p Googleで登録
+  .account_page__footer_new_path
     %p アカウントをお持ちの方は
     = link_to 'こちら', new_user_session_path
