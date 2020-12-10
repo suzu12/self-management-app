@@ -1,3 +1,21 @@
+## 要件定義
+- ユーザー管理機能
+- SNS認証
+- チーム機能
+- タグ機能
+- チャット機能
+- プロフィール機能
+- アカウント機能
+- 検索機能
+- いいね機能
+- コメント機能
+- フォロー機能
+- 通知機能
+
+## DB設計
+![entity-relationship-diagram](https://user-images.githubusercontent.com/66364552/101772466-bbc95380-3b2e-11eb-860a-683a3c793c67.png)
+
+
 # テーブル設計
 
 ## users テーブル
