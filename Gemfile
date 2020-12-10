@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -68,3 +69,6 @@ gem 'image_processing', '~> 1.2'
 gem 'active_model_serializers'
 
 gem 'active_decorator'
+
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"

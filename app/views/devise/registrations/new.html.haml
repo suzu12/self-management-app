@@ -1,8 +1,8 @@
 .container
-  .account-page
-    .account-page__header
+  .account_page
+    .account_page__header
       %h2 Hello! NewMe
-    = form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f|
+    = form_with model: @user, url: user_registration_path, local: true do |f|
       = render 'commons/error_messages', model: f.object
       %div
         = f.label :nickname, 'Nickname'
@@ -12,14 +12,17 @@
         = f.label :email, 'Email'
       %div
         = f.email_field :email, placeholder: "PC・携帯どちらでも可です", class: 'text'
-      %div
-        = f.label :password, 'Password'
-      %div
-        = f.password_field :password, placeholder: '英数字6文字以上で入力してください', autocomplete: "off", class: 'text'
-      %div
-        = f.label :password_confirmation, 'PasswordConfirmation'
-      %div
-        = f.password_field :password_confirmation, placeholder: 'もう一度Passwordを入力してください' ,autocomplete: "off", class: 'text'
+      - if @sns_id.present?
+        = hidden_field_tag :sns_auth, true
+      - else
+        %div
+          = f.label :password, 'Password'
+        %div
+          = f.password_field :password, placeholder: '英数字6文字以上で入力してください', autocomplete: "off", class: 'text'
+        %div
+          = f.label :password_confirmation, 'Password_Confirmation'
+        %div
+          = f.password_field :password_confirmation, placeholder: 'もう一度Passwordを入力してください' ,autocomplete: "off", class: 'text'
       = f.submit "CREATE ACCOUNT", class: 'btn-primary'
 
     = render 'devise/shared/footer'

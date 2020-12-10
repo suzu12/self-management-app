@@ -1,11 +1,11 @@
 @import 'variables';
 
-.account-page {
+.account_page {
   margin: 60px auto;
   padding: 60px;
 }
 
-.account-page__header h2 {
+.account_page__header h2 {
   font-family: 'billabong';
   margin-bottom: 20px;
   letter-spacing: 3px;
@@ -14,10 +14,10 @@
   text-align: center;
 }
 
-.account-page__footer {
+.account_page__footer {
   display: flex;
   align-items: center;
-  margin-top: 50px;
+  margin: 50px 0;
 
   p {
     color: $text-decoration-color;
@@ -31,9 +31,35 @@
     background: $text-line-color;
   }
 
+  &__google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 110px;
+
+    a {
+      position: relative;
+      text-decoration: none;
+      color: $text-base-color;
+    }
+
+    img {
+      position: absolute;
+      bottom: 2px;
+      width: 20px;
+      margin-right: 5px;
+      display: inline-block;
+    }
+
+    p {
+      margin-left: 30px;
+      display: inline-block;
+      padding: 0;
+    }
+  }
+
   &_new_path {
     color: $text-decoration-color;
-    margin-top: 40px;
     display: flex;
     justify-content: center;
     letter-spacing: 0.05em;

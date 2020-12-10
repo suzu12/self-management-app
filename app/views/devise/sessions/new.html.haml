@@ -1,8 +1,8 @@
 .container
-  .account-page
-    .account-page__header
+  .account_page
+    .account_page__header
       %h2 Hello! NewMe
-    = form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f|
+    = form_with model: @user, url: user_session_path, local: true do |f|
       = render 'commons/error_messages', model: f.object
       %div
         = f.label :email, 'Email'

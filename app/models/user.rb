@@ -17,15 +17,27 @@ class User < ApplicationRecord
   has_many :follower_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followers, through: :follower_relationships, source: :following
 
+  has_many :sns_credentials
+
   validates :nickname, presence: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'は英字と数字の両方を含めて設定してください'
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   delegate :birthday, :age, :gender, :bio, to: :profile, allow_nil: true
+
+  def self.from_omniauth(auth)
+    sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
+    user = User.where(email: auth.info.email).first_or_initialize(
+      email: auth.info.email
+    )
+
+    if user.persisted?
+      sns.user = user
+      sns.save
+    end
+    { user: user, sns: sns }
+  end
 
   def has_entry?(team)
     teams.exists?(id: team.id)
