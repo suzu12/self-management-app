@@ -13,7 +13,7 @@ services:
   #   build: .
   #   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
   #   volumes:
-  #     - .:/myapp:delegated
+  #     - .:/self-management-app:delegated
   #   ports:
   #     - "3000:3000"
   #   depends_on:
@@ -29,17 +29,17 @@ services:
     build: .
     command: bundle exec puma -C config/puma.rb -e production
     volumes:
-      - .:/myapp
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
-      - log-data:/myapp/log
+      - .:/self-management-app
+      - public-data:/self-management-app/public
+      - tmp-data:/self-management-app/tmp
+      - log-data:/self-management-app/log
 
   web:
     build:
       context: containers/nginx
     volumes:
-      - public-data:/myapp/public
-      - tmp-data:/myapp/tmp
+      - public-data:/self-management-app/public
+      - tmp-data:/self-management-app/tmp
     ports:
       - 80:80
 # volumes:
