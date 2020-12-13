@@ -53,3 +53,5 @@ production:
   database: <%= ENV['DB_database'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  encoding: utf8mb4
+  charset: utf8mb4
