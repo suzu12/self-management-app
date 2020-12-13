@@ -49,9 +49,10 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
   host: <%= ENV['DB_HOST'] %>
   database: <%= ENV['DB_database'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  encoding: utf8mb4
-  charset: utf8mb4
