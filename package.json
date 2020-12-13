@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "self-management-app",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
