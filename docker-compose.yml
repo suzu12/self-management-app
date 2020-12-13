@@ -1,29 +1,50 @@
 version: '3'
 services:
-  db:
-    image: mysql:8.0
-    env_file: ./.env
-    ports:
-      - '4306:3306'
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - mysql-data:/var/lib/mysql
-  web:
+## development
+  # db:
+  #   image: mysql:8.0
+  #   env_file: ./.env
+  #   ports:
+  #     - '4306:3306'
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  # web:
+  #   build: .
+  #   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  #   volumes:
+  #     - .:/myapp:delegated
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - db
+  #     - chrome
+  # chrome:
+  #   image: selenium/standalone-chrome:latest
+  #   ports:
+  #     - 4444:4444
+    # stdin_open: true
+    # tty: true
+  app:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
-      - .:/myapp:delegated
+      - .:/myapp
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
-      - chrome
-  chrome:
-    image: selenium/standalone-chrome:latest
-    ports:
-      - 4444:4444
-    stdin_open: true
-    tty: true
+      - 80:80
+# volumes:
+  # mysql-data:
 volumes:
-  mysql-data:
-    driver: local
+  public-data:
+  tmp-data:
+  log-data:
