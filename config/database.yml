@@ -49,11 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: self_management_production
-  encoding: utf8
-  charset: utf8
-  collation: utf8_general_ci
   host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_database'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock

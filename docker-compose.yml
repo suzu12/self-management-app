@@ -1,14 +1,14 @@
 version: '3'
 services:
 ## development
-  db:
-    image: mysql:8.0
-    env_file: ./.env
-    ports:
-      - '4306:3306'
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - mysql-data:/var/lib/mysql
+  # db:
+  #   image: mysql:8.0
+  #   env_file: ./.env
+  #   ports:
+  #     - '4306:3306'
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
   # web:
   #   build: .
   #   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -42,8 +42,9 @@ services:
       - tmp-data:/self-management-app/tmp
     ports:
       - 80:80
+# volumes:
+  # mysql-data:
 volumes:
-  mysql-data:
   public-data:
   tmp-data:
   log-data:
