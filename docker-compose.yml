@@ -42,9 +42,8 @@ services:
       - tmp-data:/self-management-app/tmp
     ports:
       - 80:80
-# volumes:
-  # mysql-data:
 volumes:
+  mysql-data:
   public-data:
   tmp-data:
   log-data:
