@@ -35,7 +35,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -74,3 +73,5 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 
 gem "aws-sdk-s3", require: false
+
+gem 'dotenv-rails'
