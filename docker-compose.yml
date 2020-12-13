@@ -9,13 +9,13 @@ services:
   #   command: --default-authentication-plugin=mysql_native_password
   #   volumes:
   #     - mysql-data:/var/lib/mysql
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/self-management-app:delegated
-    ports:
-      - "3000:3000"
+  # web:
+  #   build: .
+  #   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  #   volumes:
+  #     - .:/self-management-app:delegated
+  #   ports:
+  #     - "3000:3000"
     # depends_on:
       # - db
       # - chrome
@@ -23,27 +23,28 @@ services:
   #   image: selenium/standalone-chrome:latest
   #   ports:
   #     - 4444:4444
-    stdin_open: true
-    tty: true
-  # app:
-  #   build: .
-  #   command: bundle exec puma -C config/puma.rb -e production
-  #   volumes:
-  #     - .:/self-management-app
-  #     - public-data:/self-management-app/public
-  #     - tmp-data:/self-management-app/tmp
-  #     - log-data:/self-management-app/log
-
-  # web:
-  #   build:
-  #     context: containers/nginx
-  #   volumes:
-  #     - public-data:/self-management-app/public
-  #     - tmp-data:/self-management-app/tmp
-  #   ports:
-  #     - 80:80
+    # stdin_open: true
+    # tty: true
 # volumes:
 #   mysql-data:
+  app:
+    build: .
+    command: bundle exec puma -C config/puma.rb -e production
+    volumes:
+      - .:/self-management-app
+      - public-data:/self-management-app/public
+      - tmp-data:/self-management-app/tmp
+      - log-data:/self-management-app/log
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/self-management-app/public
+      - tmp-data:/self-management-app/tmp
+    ports:
+      - 80:80
+
 volumes:
   public-data:
   tmp-data:
