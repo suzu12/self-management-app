@@ -14,12 +14,14 @@ services:
 
   app:
     build: .
-    command: bundle exec puma -e production -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/self-management-app
       - public-data:/self-management-app/public
       - tmp-data:/self-management-app/tmp
       - log-data:/self-management-app/log
+    tty: true
+    stdin_open: true
 
   web:
     build:
