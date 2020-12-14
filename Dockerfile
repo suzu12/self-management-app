@@ -20,3 +20,4 @@ ADD . /self-management-app
 
 RUN mkdir -p tmp/sockets
 RUN mkdir -p tmp/pids
+CMD bundle exec puma
