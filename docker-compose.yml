@@ -1,5 +1,21 @@
-version: '3'
+version: '3.7'
+
 services:
+  app:
+    build:
+      context: .
+      args:
+        RUBY_VERSION: '2.7.1'
+        NODE_MAJOR: '14'
+        YARN_VERSION: '1.22.4'
+    command: bundle exec puma -C config/puma.rb -e production
+    volumes:
+      - .:/self-management-app
+      - public-data:/self-management-app/public
+      - tmp-data:/self-management-app/tmp
+      - log-data:/self-management-app/log
+    # depends_on:
+    #   - db
   # db:
   #   image: mysql:8.0
   #   environment:
@@ -12,15 +28,6 @@ services:
   #   ports:
   #     - "4306:3306"
 
-  app:
-    build: .
-    command: bundle exec puma -C config/puma.rb -e production
-    volumes:
-      - .:/self-management-app
-      - public-data:/self-management-app/public
-      - tmp-data:/self-management-app/tmp
-      - log-data:/self-management-app/log
-
   web:
     build:
       context: containers/nginx
@@ -31,15 +38,8 @@ services:
       - 80:80
     depends_on:
       - app
-
 volumes:
-  # mysql-data:
   public-data:
   tmp-data:
   log-data:
-  # chrome:
-  #   image: selenium/standalone-chrome:latest
-  #   ports:
-  #     - 4444:4444
-  #   stdin_open: true
-  #   tty: true
+  # mysql-data:
