@@ -29,15 +29,12 @@ services:
       - tmp-data:/self-management-app/tmp
     ports:
       - 80:80
-    depends_on:
-      - app
 
 volumes:
   # mysql-data:
   public-data:
   tmp-data:
   log-data:
-
   # chrome:
   #   image: selenium/standalone-chrome:latest
   #   ports:
