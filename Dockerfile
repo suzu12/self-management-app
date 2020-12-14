@@ -30,6 +30,7 @@ ADD Gemfile /self-management-app/Gemfile
 ADD Gemfile.lock /self-management-app/Gemfile.lock
 
 # bundle installの実行
+RUN gem install bundler
 RUN bundle install
 
 # ホストのアプリケーションディレクトリ内をすべてコンテナにコピー
