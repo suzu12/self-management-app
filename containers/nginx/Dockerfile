@@ -1,4 +1,4 @@
-FROM nginx:1.15.8
+FROM nginx:1.19.0
 
 RUN rm -f /etc/nginx/conf.d/*
 
