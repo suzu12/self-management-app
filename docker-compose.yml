@@ -14,7 +14,7 @@ services:
 
   app:
     build: .
-    command: bundle exec puma -C config/puma.rb -e production
+    command: bundle exec puma -C config/puma.rb -e production -d
     volumes:
       - .:/self-management-app
       - public-data:/self-management-app/public
