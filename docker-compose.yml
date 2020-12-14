@@ -20,6 +20,8 @@ services:
       - public-data:/self-management-app/public
       - tmp-data:/self-management-app/tmp
       - log-data:/self-management-app/log
+    ports:
+      - "3000:3000"
 
   web:
     build:
