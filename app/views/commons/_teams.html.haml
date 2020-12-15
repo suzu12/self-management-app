@@ -1,5 +1,5 @@
-.team#js-team-data{data: {team_id: teams.id}}
-  = link_to team_path(teams) do
+.team
+  = link_to team_path(teams.id) do
     .team_top
       .team_image
         = image_tag(teams.image) if teams.image.attached?

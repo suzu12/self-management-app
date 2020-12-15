@@ -11,10 +11,6 @@ class TeamsController < ApplicationController
     @team = TeamsTag.new
   end
 
-  def show
-    @team_user = TeamUser.new
-  end
-
   def create
     @team = TeamsTag.new(team_params)
     if @team.valid?
