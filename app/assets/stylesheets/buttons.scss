@@ -57,3 +57,10 @@
     display: block;
   }
 }
+
+.btn_new_user_session {
+  @extend .common-primary;
+  background-color: $sending-button;
+  text-decoration: none;
+  display: block;
+}
