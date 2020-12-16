@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    get 'nicknames', to: 'users/registrations#new_nickname'
+    post 'nicknames', to: 'users/registrations#create_nickname'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'teams#index'
   resources :filtering_searchs, only: %i(index)
