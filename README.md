@@ -1,6 +1,7 @@
 ## 要件定義
 - ユーザー管理機能
 - SNS認証
+- ウィザード形式の新規登録
 - チーム機能
 - タグ機能
 - チャット機能
@@ -137,6 +138,9 @@
 | team    | references | foreign_key: true |
 
 ### Association
+
+- has_one :nickname
+- has_one :nickname, through: :user
 
 - belongs_to :user
 - belongs_to :team
