@@ -1,0 +1,12 @@
+.container
+  .account_page
+    .account_page__nickname
+      %h2 アプリ内で使う名前を決めよう
+    = form_for @nickname do |f|
+      = render 'commons/error_messages', model: @nickname
+
+      %div
+        = f.text_field :nickname, placeholder: "名前を入力してください", autofocus: true, class: 'text'
+
+      = f.submit "Let's Enjoy", class: 'btn-primary'
+      
