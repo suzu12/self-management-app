@@ -13,7 +13,7 @@
 - 通知機能
 
 ## DB設計
-![entity-relationship-diagram](https://user-images.githubusercontent.com/66364552/101772466-bbc95380-3b2e-11eb-860a-683a3c793c67.png)
+![entity-relationship-diagram](https://user-images.githubusercontent.com/66364552/102299635-97d69980-3f96-11eb-9f96-13f87b3a5cac.png)
 
 
 # テーブル設計
