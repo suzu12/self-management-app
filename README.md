@@ -1,6 +1,36 @@
+Hello! NewMe
+==
+
+[こちらからアプリのチェックをお願いします！](https://www.selfmanagers.net/)
+
+[![Image from Gyazo](https://i.gyazo.com/3104c25a587c484acdeb0c7e2e23cd13.gif)](https://gyazo.com/3104c25a587c484acdeb0c7e2e23cd13)
+
+[![Image from Gyazo](https://i.gyazo.com/b0100db49256ed86241d696f3c4e5a41.gif)](https://gyazo.com/b0100db49256ed86241d696f3c4e5a41)
+
+## 概要
+
+挑戦したいことがある方、一人だとなかなか習慣化ができないという方、同じ目標を持つ仲間を見つけてチャレンジすることができます。
+
+## テストアカウント
+
+メールアドレス | test123@example.com
+-- | --
+パスワード | test123
+
+## 仕様
+
+- macOS Catalina 10.15.7
+- Ruby 2.6.6
+- Ruby on Rails 6.0.3.4
+- Docker
+- AWS
+- MySQL 8.0
+- Google API
+
 ## 要件定義
-- ユーザー管理機能
-- SNS認証
+
+- ユーザー管理機能(devise)
+- SNS認証(Google API)
 - ウィザード形式の新規登録
 - チーム機能
 - タグ機能
@@ -8,10 +38,14 @@
 - プロフィール機能
 - アカウント機能
 - 検索機能
-- いいね機能
-- コメント機能
+- いいね機能(Ajax)
+- コメント機能(Ajax)
 - フォロー機能
+
+## 今後実装していきたいこと
+
 - 通知機能
+- フォロー機能、チャット機能のAjax（Vue.js）
 
 ## DB設計
 ![entity-relationship-diagram](https://user-images.githubusercontent.com/66364552/102299635-97d69980-3f96-11eb-9f96-13f87b3a5cac.png)
