@@ -3,6 +3,7 @@ class Apps::ProfilesController < Apps::ApplicationController
 
   def show
     @profile = current_user.profile
+    @nickname = current_user.nickname.nickname
   end
 
   def update
