@@ -5,17 +5,19 @@ services:
     build:
       context: .
       args:
-        RUBY_VERSION: '2.7.1'
+        RUBY_VERSION: '2.6.6'
         NODE_MAJOR: '14'
         YARN_VERSION: '1.22.4'
-    command: bundle exec puma -C config/puma.rb -e production
+    # command: bundle exec puma -C config/puma.rb # 開発環境
+    command: bundle exec puma -C config/puma.rb -e production # 本番環境
     volumes:
       - .:/self-management-app
       - public-data:/self-management-app/public
       - tmp-data:/self-management-app/tmp
       - log-data:/self-management-app/log
-    # depends_on:
-    #   - db
+  #   depends_on:
+  #     - db
+
   # db:
   #   image: mysql:8.0
   #   environment:

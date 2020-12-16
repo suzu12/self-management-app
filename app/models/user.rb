@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_one :profile, dependent: :destroy
+  has_one :nickname
 
   has_many :team_users
   has_many :teams, through: :team_users
@@ -18,8 +19,6 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :following
 
   has_many :sns_credentials
-
-  validates :nickname, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]

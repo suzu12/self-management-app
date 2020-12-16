@@ -16,7 +16,7 @@
           %p フォロー中
 
     .profilePage_user_info
-      #{ user.nickname } / #{I18n.t( "enum.genders.#{user.gender || 'unknown'}") } / #{ user.age || '未入力' }
+      #{ user.nickname.nickname } / #{I18n.t( "enum.genders.#{user.gender || 'unknown'}") } / #{ user.age || '未入力' }
 
     .profilePage_user_bio
       #{ user.bio || '未入力' }

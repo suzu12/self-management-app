@@ -2,12 +2,9 @@
   .account_page
     .account_page__header
       %h2 Hello! NewMe
-    = form_with model: @user, url: user_registration_path, local: true do |f|
-      = render 'commons/error_messages', model: f.object
-      %div
-        = f.label :nickname, 'Nickname'
-      %div
-        = f.text_field :nickname, placeholder: "アプリ内で使用する名前を入力してください", autofocus: true, class: 'text'
+    = form_for(@user, url: user_registration_path) do |f|
+      = render 'commons/error_messages', model: @user
+
       %div
         = f.label :email, 'Email'
       %div

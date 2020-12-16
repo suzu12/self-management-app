@@ -1,4 +1,4 @@
-- unless current_page?(new_user_session_path) || current_page?(new_user_registration_path)
+- unless %i(user_session new_user_registration).any? { |name| current_page?(send("#{name}_path")) }
   %header.header
     .header_left
       .header_logos

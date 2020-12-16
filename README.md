@@ -22,13 +22,13 @@
 
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
-| nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
 
 ### Association
 
 - has_one :profile
+- has_one :nickname
 
 - has_many :sns_credentials
 - has_many :team_users
@@ -54,6 +54,16 @@
 | user     | references | null: false |
 
 ### Association
+
+- belongs_to :user, optional: true
+
+
+## nicknames テーブル
+
+| Column   | Type       | Options     |
+| -------- | ---------- | ----------- |
+| nickname | string     | null: false |
+| user     | references |             |
 
 - belongs_to :user, optional: true
 

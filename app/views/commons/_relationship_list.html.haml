@@ -4,7 +4,7 @@
       .relationship_icon_image
         = image_tag(user.icon_image)
       .relationship_display_name
-        = user.nickname
+        = user.nickname.nickname
     .relationship_right
       .relationship_actionButton
         - if @account.followed?(user)
