@@ -7,12 +7,11 @@ jobs:
         environment:
           - BUNDLER_VERSION: 1.17.2
           - RAILS_ENV: 'test'
-
       - image: circleci/mysql:8.0
         command: [--default-authentication-plugin=mysql_native_password]
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_ROOT_HOST: '%'
+          - MYSQL_USER: root
+          - MYSQL_DB: ci_test
 
     working_directory: ~/self-management-app
 
