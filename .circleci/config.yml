@@ -3,12 +3,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.6
+      - image: circleci/ruby:2.6.6-node
         environment:
           - BUNDLER_VERSION: 1.17.2
           - RAILS_ENV: 'test'
 
       - image: circleci/mysql:8.0
+        command: [--default-authentication-plugin=mysql_native_password]
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
@@ -38,6 +39,8 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
+      - run: yarn install
+      
       - run:
           name: run tests
           command: |
