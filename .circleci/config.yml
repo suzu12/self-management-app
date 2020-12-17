@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.0
 jobs:
   build:
     docker:
@@ -16,35 +16,35 @@ jobs:
     steps:
       - checkout
 
-    - restore_cache:
+      - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "Gemfile.lock" }}
         - v1-dependencies-
 
-    - run:
+      - run:
         name: install dependencies
         command: |
           gem install bundler -v 1.17.2
           bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-    - save_cache:
+      - save_cache:
         paths:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-    - run: mv ./config/database.yml.ci ./config/database.yml
+      - run: mv ./config/database.yml.ci ./config/database.yml
 
-    - run:
+      - run:
         name: Databasesetup
         command: |
           bundle exec rake db:create
           bundle exec rake db:schema:load
 
-    - run:
+      - run:
         name: Rubocop
         command: bundle exec rubocop
 
-    - run:
+      - run:
         name: Run rspec
         command: |
           mkdir /tmp/test-results
@@ -58,8 +58,8 @@ jobs:
             --format progress \
             $TEST_FILES
 
-    - store_test_results:
+      - store_test_results:
         path: /tmp/test-results
-    - store_artifacts:
+      - store_artifacts:
         path: /tmp/test-results
         destination: test-results
