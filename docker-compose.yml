@@ -20,11 +20,6 @@ services:
 
   # db:
   #   image: mysql:8.0
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: password
-  #     MYSQL_USER: user
-  #     MYSQL_PASSWORD: 1234
-  #     MYSQL_DATABASE: self-management-app_db
   #   volumes:
   #     - mysql-data:/var/lib/mysql
   #   ports:
@@ -44,4 +39,4 @@ volumes:
   public-data:
   tmp-data:
   log-data:
-  # mysql-data:
+  mysql-data:

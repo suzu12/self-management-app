@@ -36,3 +36,5 @@ yarn-debug.log*
 .yarn-integrity
 .Ds_Store
 .env
+!/tmp/pids
+!/tmp/sockets
