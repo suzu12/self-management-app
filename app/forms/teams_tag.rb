@@ -16,7 +16,8 @@ class TeamsTag
   validates :period_id, numericality: { other_than: 1, message: 'を選択してください' }
 
   def save
-    team = Team.create(category_id: category_id, team_name: team_name, introduction: introduction, period_id: period_id, image: image)
+    team = Team.create(category_id: category_id, team_name: team_name, introduction: introduction, period_id: period_id,
+                       image: image)
     tags = split_tag_list.map { |name| Tag.find_or_create_by(name: name) }
 
     tags.each do |tag|

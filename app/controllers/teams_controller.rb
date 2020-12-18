@@ -54,7 +54,8 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:teams_tag).permit(:category_id, :team_name, :introduction, :period_id, :image, :name).merge(user_id: current_user.id)
+    params.require(:teams_tag).permit(:category_id, :team_name, :introduction, :period_id, :image,
+                                      :name).merge(user_id: current_user.id)
   end
 
   def update_team_params
