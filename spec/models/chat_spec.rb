@@ -4,7 +4,8 @@ RSpec.describe Chat, type: :model do
   describe '#create' do
     before do
       @user = FactoryBot.create(:user)
-      @teams_tag = FactoryBot.build(:teams_tag, user_id: @user.id, image: fixture_file_upload('spec/fixtures/images/test_image.png'))
+      @teams_tag = FactoryBot.build(:teams_tag, user_id: @user.id,
+                                                image: fixture_file_upload('spec/fixtures/images/test_image.png'))
       @chat = FactoryBot.build(:chat, user_id: @user.id, team_id: @teams_tag.save.team_id)
     end
 
