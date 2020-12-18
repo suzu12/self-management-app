@@ -1,8 +1,6 @@
 Hello! NewMe
 ==
 
-[こちらからアプリのチェックをお願いします！](https://www.selfmanagers.net/)
-
 [![Image from Gyazo](https://i.gyazo.com/3104c25a587c484acdeb0c7e2e23cd13.gif)](https://gyazo.com/3104c25a587c484acdeb0c7e2e23cd13)
 
 [![Image from Gyazo](https://i.gyazo.com/b0100db49256ed86241d696f3c4e5a41.gif)](https://gyazo.com/b0100db49256ed86241d696f3c4e5a41)
@@ -10,6 +8,7 @@ Hello! NewMe
 ## 概要
 
 挑戦したいことがある方、一人だとなかなか習慣化ができないという方、同じ目標を持つ仲間を見つけてチャレンジすることができます。
+<br>[こちらからアプリのチェックをお願いします！](https://www.selfmanagers.net/)
 
 ## テストアカウント
 
@@ -22,6 +21,8 @@ Hello! NewMe
 - macOS Catalina 10.15.7
 - Ruby 2.6.6
 - Ruby on Rails 6.0.3.4
+- Nginx 1.19.0
+- Puma 4.3.7
 - Docker
 - AWS
 - MySQL 8.0
