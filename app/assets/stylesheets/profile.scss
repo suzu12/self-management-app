@@ -22,6 +22,15 @@ $image_size: 70px;
   text-align: center;
 }
 
+.follow_status {
+  line-height: 1;
+  font-size: 15px;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid $text-decoration-color;
+}
+
 // ------ プロフィールユーザー ------
 .profilePage {
   padding: 16px 24px;
@@ -87,12 +96,14 @@ $image_size: 70px;
 
     &_followed { 
       @extend .user_page_switch;
+      @extend .follow_status;
       color: $base-color;
       background-color: $primary-color;
     }
 
     &_following {
       @extend .user_page_switch;
+      @extend .follow_status;
       color: $text-base-color;
     }
   }

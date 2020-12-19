@@ -1,13 +1,14 @@
-= link_to account_path(user) do
-  .relationship_list
+.relationship_list
+  = link_to account_path(user) do
     .relationship_left
       .relationship_icon_image
         = image_tag(user.icon_image)
       .relationship_display_name
         = user.nickname.nickname
-    .relationship_right
-      .relationship_actionButton
-        - if @account.followed?(user)
-          = link_to 'フォロー中', account_unfollows_path(user), data: { method: :post }, class: 'following'
-        - else
-          = link_to 'フォロー', account_follows_path(user), data: { method: :post }, class: 'followers'
+  .relationship_right
+    .relationship_actionButton
+      - unless current_user == user
+        .followers.hidden.followed-js{id: "followed-js#{user.id}", data: {account: user.id}}
+          %p フォロー中
+        .following.hidden.following-js{id: "following-js#{user.id}", data: {account: user.id}}
+          %p フォロー

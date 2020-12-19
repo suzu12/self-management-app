@@ -47,6 +47,8 @@
     margin-bottom: 15px;
     a {
       text-decoration: none;
+      display: block;
+      width: 100%;
     }
   }
   &_left {
@@ -74,19 +76,25 @@
     border: none;
     font-size: 14px;
   }
+
+  &_right {
+    width: 120px;
+  }
 }
 
-.following {
+.followers {
   color: $base-color;
   background-color: $sending-button;
   padding: 5px 10px;
   border-radius: 10px;
+  text-align: center;
 }
 
-.followers {
+.following {
   color: $text-base-color;
   background-color: $base-color;
   padding: 5px 10px;
   border: 1px solid $text-decoration-color;
   border-radius: 10px;
+  text-align: center;
 }
