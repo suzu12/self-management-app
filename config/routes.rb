@@ -20,10 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :accounts, only: :show do
-    resources :follows, only: :create
-    resources :unfollows, only: :create
-    resource :following_list, only: %i(show)
-    resource :follower_list, only: %i(show)
+    resource :following_list, only: :show
+    resource :follower_list, only: :show
   end
 
   scope module: :apps do
@@ -37,5 +35,11 @@ Rails.application.routes.draw do
       resources :comments, only: %i(index create)
       resource :like, only: %i(show create destroy)
     end
+
+    scope '/accounts/:account_id' do
+      resources :follows, only: %i(index create)
+      resources :unfollows, only: :create
+    end
+
   end
 end

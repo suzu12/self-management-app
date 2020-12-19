@@ -8,7 +8,7 @@
         %p マイチーム
       .profilePage_user_followed_count
         = link_to account_follower_list_path(user) do
-          %span= user.follower_count
+          %span.follow-count-js= user.follower_count
           %p フォロワー
       .profilePage_user_following_count
         = link_to account_following_list_path(user) do
@@ -24,11 +24,10 @@
       - if user == current_user
         = link_to 'プロフィールを編集する', edit_profile_path, class: 'profilePage_user_edit'
       - else
-        - if current_user.followed?(user)
-          = link_to 'フォロー中', account_unfollows_path(user), data: { method: :post }, class: 'profilePage_user_followed'
-        - else
-          = link_to 'フォロー', account_follows_path(user), data: { method: :post }, class: 'profilePage_user_following'
-
+        .profilePage_user_followed.hidden.followed-js{id: "followed-js#{user.id}", data: {account: user.id}}
+          %p フォロー中
+        .profilePage_user_following.hidden.following-js{id: "following-js#{user.id}", data: {account: user.id}}
+          %p フォロー
 
     - user.teams.each do |team|
       = render 'commons/teams', teams: team
