@@ -36,13 +36,13 @@ RSpec.describe Chat, type: :model do
       it 'teamが紐付いていないと保存できないこと' do
         @chat.team_id = nil
         @chat.valid?
-        expect(@chat.errors.full_messages).to include("Team can't be blank")
+        expect(@chat.errors.full_messages).to include("Team must exist")
       end
 
       it 'userが紐付いていないと保存できないこと' do
         @chat.user_id = nil
         @chat.valid?
-        expect(@chat.errors.full_messages).to include("User can't be blank")
+        expect(@chat.errors.full_messages).to include("User must exist")
       end
     end
   end
