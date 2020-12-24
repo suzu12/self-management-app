@@ -3,7 +3,7 @@ Hello! NewMe
 
 [![Image from Gyazo](https://i.gyazo.com/3104c25a587c484acdeb0c7e2e23cd13.gif)](https://gyazo.com/3104c25a587c484acdeb0c7e2e23cd13)
 
-[![Image from Gyazo](https://i.gyazo.com/b0100db49256ed86241d696f3c4e5a41.gif)](https://gyazo.com/b0100db49256ed86241d696f3c4e5a41)
+[![Image from Gyazo](https://i.gyazo.com/8fdd874b8978c1a4ef2560d2080a4829.gif)](https://gyazo.com/8fdd874b8978c1a4ef2560d2080a4829)
 
 ## 概要
 
@@ -35,18 +35,17 @@ Hello! NewMe
 - ウィザード形式の新規登録
 - チーム機能
 - タグ機能
-- チャット機能
+- チャット機能(ActionCable ※現状写真を送ることができません。)
 - プロフィール機能
 - アカウント機能
 - 検索機能
-- いいね機能(Ajax)
-- コメント機能(Ajax)
-- フォロー機能
+- いいね機能(jQuery)
+- コメント機能(jQuery)
+- フォロー機能(jQuery)
 
 ## 今後実装していきたいこと
 
-- 通知機能
-- フォロー機能、チャット機能のAjax（Vue.js）
+- 通知機能（毎日設定した時間でリマインド）
 
 ## DB設計
 ![entity-relationship-diagram](https://user-images.githubusercontent.com/66364552/102299635-97d69980-3f96-11eb-9f96-13f87b3a5cac.png)
