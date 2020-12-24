@@ -5,15 +5,16 @@
     %ul
       - @chat.errors.full_messages.each do |message|
         %li.error-message= message
-  .chats
-    = render partial: 'chat', collection: @chats
+
+
+  .chats#chats{"data-team_id": "#{@team.id}"}
+    = render @chats
   .mychat_image
 
-  = form_with(model: [@team, @chat], class: 'form', local: true) do |f|
+  .form
     .form-input
       %label.form-image
         = image_tag 'photo.png'
-        #{f.file_field :photo, class: 'hidden'}
-      = f.text_field :content, class: 'form-chat', placeholder: 'Aa'
-
-    = f.submit "送信", class: 'form-submit'
+        %input{type: "file", class: 'hidden', name: 'photo', id: 'chat_photo'}/
+      = text_field_tag :content, nil, class: 'form-chat',placeholder: 'Aa'
+      %input{type: 'submit', class: 'form-submit'}

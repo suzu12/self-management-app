@@ -1,6 +1,6 @@
 class Chat < ApplicationRecord
-  belongs_to :user, optional: true
-  belongs_to :chat, optional: true
+  belongs_to :user
+  belongs_to :team
 
   has_one :nickname
   has_one :nickname, through: :user
@@ -11,6 +11,5 @@ class Chat < ApplicationRecord
     photo.attached?
   end
 
-  validates :user_id, presence: true
-  validates :team_id, presence: true
+  after_create_commit { ChatBroadcastJob.perform_later self }
 end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :filtering_searchs, only: %i(index)
 
   resources :teams do
-    resources :chats, only: %i(index create)
+    resources :chats, only: :index
     resources :team_users, only: :create
     collection do
       get 'search'
