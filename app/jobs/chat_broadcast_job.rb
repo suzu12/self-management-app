@@ -11,7 +11,7 @@ class ChatBroadcastJob < ApplicationJob
     # ApplicationController.renderer.render partial: 'chats/chat', locals: { chat: chat }
     renderer = ApplicationController.renderer.new(
       # http_host: 'localhost:80'
-      http_host: 'https://www.selfmanagers.net/', # 本番環境
+      http_host: 'http://www.selfmanagers.net/', # 本番環境
       https: true # 本番環境
     )
     renderer.render(partial: 'chats/chat', locals: { chat: chat })
