@@ -1,20 +1,12 @@
 .chat
-  - if user_signed_in?
-    - unless current_user.id == chat.user_id
-      .chat_user
-        .chat_user_icon
-          = image_tag(chat.user.icon_image)
-          %p= chat.nickname.nickname
-        .chat_user_message
-          .chat_content
-            %p= chat.content
-            = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
-          .chat_date
-            = I18n.l(Time.zone.now , format: :short)
-    - else
-      .mychat
-        .mychat_date
-          = I18n.l(Time.zone.now , format: :short)
-        .mychat_content
-          %p= chat.content
-          = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
+  .chat_left
+    .chat_left_icon
+      = image_tag(chat.user.icon_image)
+  .chat_right
+    .chat_top
+      .chat_user_name #{chat.nickname.nickname}
+      .chat_time #{l chat.created_at, format: :short}
+    .chat_under
+      .chat_content
+        %p= chat.content
+        = image_tag chat.photo, class: 'chat_image' if chat.photo.attached?
