@@ -9,5 +9,11 @@ FactoryBot.define do
         build(:profile, user: user)
       end
     end
+
+    trait :with_nickname do
+      after :build do |user|
+        build(:nickname, user: user)
+      end
+    end
   end
 end
