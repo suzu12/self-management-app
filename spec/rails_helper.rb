@@ -33,6 +33,15 @@ end
 
 I18n.locale = 'en'
 
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:google_oauth2] =
+  OmniAuth::AuthHash.new({
+                           provider: 'google_oauth2',
+                           uid: '000000',
+                           info: { email: 'test@example.com' },
+                           credentials: { token: 'google_oauth2_test' }
+                         })
+
 Capybara.register_driver :remote_chrome do |app|
   url = 'http://chrome:4444/wd/hub'
   caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
@@ -89,7 +98,7 @@ RSpec.configure do |config|
   config.before(:each, type: :system, js: true) do
     driven_by :remote_chrome
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 3000
+    Capybara.server_port = 3001
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
 end
