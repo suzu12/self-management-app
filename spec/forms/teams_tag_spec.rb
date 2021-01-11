@@ -2,8 +2,14 @@ require 'rails_helper'
 
 RSpec.describe TeamsTag, type: :model do
   describe '#create' do
-    let!(:user) { create(:user) }
-    let!(:teams_tag) { build(:teams_tag, user_id: user.id, image: fixture_file_upload('spec/fixtures/images/test_image.png')) }
+    let(:user)      { create(:user) }
+    let(:teams_tag) do
+      build(
+        :teams_tag,
+        user_id: user.id,
+        image: fixture_file_upload('spec/fixtures/images/test_image.png')
+      )
+    end
 
     context 'チーム作成が成功する場合' do
       it 'category_id, team_name, period_id, introduction, name, user_id, imageがあれば保存できること' do
