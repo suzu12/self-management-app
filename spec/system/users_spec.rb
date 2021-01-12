@@ -43,15 +43,15 @@ RSpec.describe 'Users', type: :system do
       expect(current_path).to eq '/users'
     end
 
-    it 'Google認証で登録すること' do
+    it 'Google認証で登録すること', js: true do
       visit new_user_registration_path
       click_on 'Googleで登録'
-      sleep(0.5)
       click_on 'CREATE ACCOUNT'
       expect(page).to have_content('アプリ内で使う名前を決めよう')
       fill_in 'nickname_nickname',	with: 'サトウ'
       expect  do
         click_on "Let's Enjoy"
+        sleep 0.5
       end.to change { User.count }.by(1)
 
       expect(current_path).to eq root_path
