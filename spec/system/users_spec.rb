@@ -22,7 +22,7 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_content('アプリ内で使う名前を決めよう')
       fill_in 'nickname_nickname',	with: 'サトウ'
       expect  do
-        click_on "Let's Enjoy"
+        find('input[name="commit"]').click
       end.to change { User.count }.by(1)
 
       expect(current_path).to eq root_path
@@ -43,14 +43,14 @@ RSpec.describe 'Users', type: :system do
       expect(current_path).to eq '/users'
     end
 
-    it 'Google認証で登録すること', js: true do
+    it 'Google認証で登録すること' do
       visit new_user_registration_path
       click_on 'Googleで登録'
       click_on 'CREATE ACCOUNT'
       expect(page).to have_content('アプリ内で使う名前を決めよう')
       fill_in 'nickname_nickname',	with: 'サトウ'
       expect  do
-        click_on "Let's Enjoy"
+        find('input[name="commit"]').click
         sleep 0.5
       end.to change { User.count }.by(1)
 
@@ -61,9 +61,9 @@ RSpec.describe 'Users', type: :system do
 
   context 'アカウントを持っている場合' do
     before do
-      @user = User.create(
-        email: 'test@example.com',
-        password: 'test12'
+      @user = FactoryBot.create(
+        :user,
+        email: 'test@example.com'
       )
     end
 

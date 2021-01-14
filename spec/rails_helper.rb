@@ -33,30 +33,6 @@ end
 
 I18n.locale = 'en'
 
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:google_oauth2] =
-  OmniAuth::AuthHash.new({
-                           provider: 'google_oauth2',
-                           uid: '000000',
-                           info: { email: 'test@example.com' },
-                           credentials: { token: 'google_oauth2_test' }
-                         })
-
-Capybara.register_driver :remote_chrome do |app|
-  url = 'http://chrome:4444/wd/hub'
-  caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
-    'goog:chromeOptions' => {
-      'args' => [
-        'no-sandbox',
-        'headless',
-        'disable-gpu',
-        'window-size=1680,1050'
-      ]
-    }
-  )
-  Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
-end
-
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -65,6 +41,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   config.include SearchSupport
+  config.include CapybaraSupport
+  config.include OmniAuthSupport
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -98,7 +76,7 @@ RSpec.configure do |config|
   config.before(:each, type: :system, js: true) do
     driven_by :remote_chrome
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 3001
+    Capybara.server_port = 4444
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
 end
