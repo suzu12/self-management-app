@@ -9,8 +9,8 @@ RSpec.describe 'Chats', type: :system do
   end
 
   describe '#index' do
-    context 'ログインしている場合' do
-      it 'いいねができること', js: true do
+    context 'ログインしている場合', js: true do
+      it 'いいねができること' do
         sign_in other_user
         visit root_path
         expect(page).to have_css('.team_name', text: @team.team_name)
@@ -20,7 +20,7 @@ RSpec.describe 'Chats', type: :system do
         end.to change { Like.count }.by(1)
       end
 
-      it 'いいねを取り消すことができること', js: true do
+      it 'いいねを取り消すことができること' do
         sign_in other_user
         visit root_path
         expect(page).to have_css('.team_name', text: @team.team_name)
@@ -40,7 +40,7 @@ RSpec.describe 'Chats', type: :system do
       end
     end
     context 'ログインしていない場合' do
-      it 'いいねができないこと', js: true do
+      it 'いいねができないこと' do
         visit root_path
         expect(page).to have_css('.team_name', text: @team.team_name)
         expect(page).to have_no_css('.team_star')
@@ -49,8 +49,8 @@ RSpec.describe 'Chats', type: :system do
   end
 
   describe '#show' do
-    context 'ログインしている場合' do
-      it 'いいねができること', js: true do
+    context 'ログインしている場合', js: true do
+      it 'いいねができること' do
         sign_in other_user
         visit team_path(user.teams.last)
         expect(page).to have_css('.team_name', text: @team.team_name)
@@ -63,7 +63,7 @@ RSpec.describe 'Chats', type: :system do
         expect(page).to have_css('.star_counter > span', text: '1')
       end
 
-      it 'いいねを取り消すことができること', js: true do
+      it 'いいねを取り消すことができること' do
         sign_in other_user
         visit team_path(user.teams.last)
         find('.in-active-star').click
@@ -83,7 +83,7 @@ RSpec.describe 'Chats', type: :system do
     end
 
     context 'ログインしていない場合' do
-      it 'いいねができないこと', js: true do
+      it 'いいねができないこと' do
         visit team_path(user.teams.last)
         expect(page).to have_css('.team_name', text: @team.team_name)
         expect(page).to have_no_css('.team_star')

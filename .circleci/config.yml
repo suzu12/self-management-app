@@ -12,26 +12,26 @@ jobs:
         environment:
           - MYSQL_USER: root
           - MYSQL_DB: ci_test
+          - MYSQL_ROOT_HOST: "127.0.0.1"
+      - image: selenium/standalone-chrome-debug:latest
+        name: chrome
 
     working_directory: ~/self-management-app
 
     steps:
-      - checkout
-
       - run:
           name: Chrome Driver Install
           command: chromedriver
           background: true
 
+      - checkout
+      - run: sudo apt update
+      - run: sudo apt upgrade
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
-
-      - restore_cache:
-          keys:
-            - rails-yarn-{{ checksum "yarn.lock" }}
-            - rails-yarn-
 
       - run:
           name: install dependencies
@@ -39,23 +39,18 @@ jobs:
             gem install bundler -v 2.0.2
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-      - run:
-          name: yarn
-          command: yarn install --cache-folder ~/.cache/yarn
-
       - save_cache:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
 
-      - save_cache:
-          key: rails-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - run:
+          name: yarn
+          command: yarn install
 
-      - run: mv config/database.yml.ci config/database.yml
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run:
+          name: database
+          command: bundle exec rails db:create || bundle exec rails db:migrate
 
       - run:
           name: run tests
@@ -63,14 +58,12 @@ jobs:
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
-            sudo gem install bundler
-            sudo gem install rspec
-            sudo gem install rspec-core
             bundle exec rspec \
               --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
               --format progress \
               $TEST_FILES
+          no_output_timeout: 15m
 
       - store_test_results:
           path: /tmp/test-results

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Comments', type: :system do
+RSpec.describe 'Comments', type: :system, js: true do
   let(:user)       { create(:user) }
   let(:other_user) { create(:user) }
   before do
@@ -9,7 +9,7 @@ RSpec.describe 'Comments', type: :system do
   end
 
   context 'ログインしている場合' do
-    it 'コメントができること', js: true do
+    it 'コメントができること' do
       sign_in other_user
       visit team_path(user.teams.last)
       expect(page).to have_css('.team_name', text: @team.team_name)
@@ -29,7 +29,7 @@ RSpec.describe 'Comments', type: :system do
   end
 
   context 'ログインしていない場合' do
-    it 'コメントをしても反映されないこと', js: true do
+    it 'コメントをしても反映されないこと' do
       visit team_path(user.teams.last)
       expect(page).to have_css('.team_name', text: @team.team_name)
       expect(page).to have_content('コメントを書く')
@@ -48,7 +48,7 @@ RSpec.describe 'Comments', type: :system do
     end
   end
   context 'コメント欄になにも入力しない場合' do
-    it '投稿できないこと', js: true do
+    it '投稿できないこと' do
       sign_in other_user
       visit team_path(user.teams.last)
       expect(page).to have_css('.team_name', text: @team.team_name)

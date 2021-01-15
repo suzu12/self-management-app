@@ -8,8 +8,8 @@ RSpec.describe 'Relationships', type: :system do
     @team.save
   end
 
-  context 'ログインしている場合' do
-    it 'フォローができること', js: true do
+  context 'ログインしている場合', js: true do
+    it 'フォローができること' do
       sign_in other_user
       visit root_path
       find('.team_center_icon').find('img').click
@@ -26,7 +26,7 @@ RSpec.describe 'Relationships', type: :system do
       expect(page).to have_content('フォロー中')
     end
 
-    it 'フォローを外すことができること', js: true do
+    it 'フォローを外すことができること' do
       sign_in other_user
       visit root_path
       find('.team_center_icon').find('img').click
@@ -42,7 +42,7 @@ RSpec.describe 'Relationships', type: :system do
       expect(page).to have_css('.follow-count-js', text: '0')
     end
 
-    it 'フォロワーリストを閲覧できること', js: true do
+    it 'フォロワーリストを閲覧できること' do
       sign_in other_user
       visit root_path
       find('.team_center_icon').find('img').click
@@ -53,7 +53,7 @@ RSpec.describe 'Relationships', type: :system do
       expect(page).to have_css('.relationship_display_name', text: other_user.nickname.nickname)
     end
 
-    it 'フォローリストを閲覧できること', js: true do
+    it 'フォローリストを閲覧できること' do
       sign_in other_user
       visit root_path
       find('.team_center_icon').find('img').click

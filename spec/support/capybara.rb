@@ -1,5 +1,7 @@
+require 'selenium-webdriver'
+
 module CapybaraSupport
-  Capybara.register_driver :remote_chrome do |app|
+  Capybara.register_driver :selenium_chrome_headless do |app|
     url = 'http://chrome:4444/wd/hub'
     caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
       'goog:chromeOptions' => {
@@ -11,6 +13,6 @@ module CapybaraSupport
         ]
       }
     )
-    Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
+    Capybara::Selenium::Driver.new(app, browser: :chrome, url: url, desired_capabilities: caps)
   end
 end

@@ -15,7 +15,7 @@ RSpec.describe 'Api::Likes', type: :request do
 
   describe 'GET /api/like' do
     context 'ログインしている場合' do
-      it '200 Status', js: true do
+      it '200 Status' do
         sign_in other_user
         get api_like_path(team_id: Team.last.id)
         expect(response).to have_http_status(200)
@@ -23,7 +23,7 @@ RSpec.describe 'Api::Likes', type: :request do
     end
 
     context 'ログインしていない場合' do
-      it '302 Status', js: true do
+      it '302 Status' do
         get api_like_path(team_id: Team.last.id)
         expect(response).to have_http_status(302)
       end
@@ -32,7 +32,7 @@ RSpec.describe 'Api::Likes', type: :request do
 
   describe 'POST /api/like' do
     context 'ログインしている場合' do
-      it '200 Status', js: true do
+      it '200 Status' do
         sign_in other_user
         post api_like_path(team_id: Team.last.id)
         expect(response).to have_http_status(200)
@@ -40,7 +40,7 @@ RSpec.describe 'Api::Likes', type: :request do
     end
 
     context 'ログインしていない場合' do
-      it '302 Status', js: true do
+      it '302 Status' do
         post api_like_path(team_id: Team.last.id)
         expect(response).to have_http_status(302)
       end
@@ -49,7 +49,7 @@ RSpec.describe 'Api::Likes', type: :request do
 
   describe 'DELETE /api/like' do
     context 'ログインしている場合' do
-      it '200 Status', js: true do
+      it '200 Status' do
         sign_in other_user
         post api_like_path(team_id: Team.last.id)
         delete api_like_path(team_id: Team.last.id)
@@ -58,7 +58,7 @@ RSpec.describe 'Api::Likes', type: :request do
     end
 
     context 'ログインしていない場合' do
-      it '302 Status', js: true do
+      it '302 Status' do
         post api_like_path(team_id: Team.last.id)
         delete api_like_path(team_id: Team.last.id)
         expect(response).to have_http_status(302)
