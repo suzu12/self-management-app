@@ -1,21 +1,15 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
-module CapybaraSupport
-  Capybara.javascript_driver = :selenium_chrome_headless
-  Capybara.default_driver    = :selenium_chrome_headless
-  Capybara.register_driver :selenium_chrome_headless do |app|
-    url = 'http://chrome:4444/wd/hub'
-    caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
-      'goog:chromeOptions' => {
-        'args' => [
-          'no-sandbox',
-          'headless',
-          'disable-gpu',
-          'window-size=1680,1050'
-        ]
-      }
-    )
-    Capybara::Selenium::Driver.new(app, browser: :chrome, url: url, desired_capabilities: caps)
-  end
+Capybara.register_driver :selenium_chrome_headless do |app|
+  options = ::Selenium::WebDriver::Chrome::Options.new
+
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--window-size=1400,1400')
+
+  driver = Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+
+Capybara.javascript_driver = :selenium_chrome_headless

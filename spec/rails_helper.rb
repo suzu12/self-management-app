@@ -41,7 +41,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   config.include SearchSupport
-  config.include CapybaraSupport
   config.include OmniAuthSupport
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -75,8 +74,5 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system, js: true) do
     driven_by :selenium_chrome_headless
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 3001
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
 end
