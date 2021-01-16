@@ -1,6 +1,9 @@
+require 'capybara/rspec'
 require 'selenium-webdriver'
 
 module CapybaraSupport
+  Capybara.javascript_driver = :selenium_chrome_headless
+  Capybara.default_driver    = :selenium_chrome_headless
   Capybara.register_driver :selenium_chrome_headless do |app|
     url = 'http://chrome:4444/wd/hub'
     caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(

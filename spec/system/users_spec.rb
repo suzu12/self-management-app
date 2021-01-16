@@ -49,10 +49,7 @@ RSpec.describe 'Users', type: :system do
       click_on 'CREATE ACCOUNT'
       expect(page).to have_content('アプリ内で使う名前を決めよう')
       fill_in 'nickname_nickname',	with: 'サトウ'
-      expect  do
-        find('input[name="commit"]').click
-        sleep 0.5
-      end.to change { User.count }.by(1)
+      find('input[name="commit"]').click
 
       expect(current_path).to eq root_path
       expect(page).to have_content('作成できました')
