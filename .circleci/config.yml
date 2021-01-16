@@ -35,8 +35,6 @@ jobs:
           background: true
 
       - checkout
-      - run: sudo apt update
-      - run: sudo apt upgrade
 
       - restore_cache:
           keys:
