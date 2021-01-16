@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Profile', type: :system do
+RSpec.describe 'Profiles', type: :system do
   let!(:user) { create(:user, :with_profile) }
   let!(:nickname) { create(:nickname, user: user) }
 

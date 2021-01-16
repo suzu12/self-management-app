@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -33,21 +33,6 @@ end
 
 I18n.locale = 'en'
 
-Capybara.register_driver :remote_chrome do |app|
-  url = 'http://chrome:4444/wd/hub'
-  caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
-    'goog:chromeOptions' => {
-      'args' => [
-        'no-sandbox',
-        'headless',
-        'disable-gpu',
-        'window-size=1680,1050'
-      ]
-    }
-  )
-  Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
-end
-
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -55,7 +40,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  config.include SearchSupport
+  config.include OmniAuthSupport
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -87,9 +73,6 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
-    driven_by :remote_chrome
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 3000
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+    driven_by :selenium_chrome_headless
   end
 end

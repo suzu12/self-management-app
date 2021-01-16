@@ -15,8 +15,8 @@ services:
       - public-data:/self-management-app/public
       - tmp-data:/self-management-app/tmp
       - log-data:/self-management-app/log
-  #   depends_on:
-  #     - db
+    # depends_on:
+    #   - db
 
   # db:
   #   image: mysql:8.0
@@ -35,6 +35,7 @@ services:
       - 80:80
     depends_on:
       - app
+
 volumes:
   public-data:
   tmp-data:

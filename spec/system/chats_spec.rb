@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Chat', type: :system do
+RSpec.describe 'Chats', type: :system do
   let!(:user) { create(:user) }
   before do
     @team = FactoryBot.build(:teams_tag, user_id: user.id, image: fixture_file_upload('spec/fixtures/images/test_image.png'))
