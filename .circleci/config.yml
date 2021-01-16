@@ -13,8 +13,6 @@ jobs:
           - MYSQL_USER: root
           - MYSQL_DB: ci_test
           - MYSQL_ROOT_HOST: "127.0.0.1"
-      - image: selenium/standalone-chrome-debug:latest
-        name: chrome
 
     working_directory: ~/self-management-app
 
@@ -44,13 +42,10 @@ jobs:
           paths:
             - ./vendor/bundle
 
-      - run:
-          name: yarn
-          command: yarn install
-
-      - run:
-          name: database
-          command: bundle exec rails db:create || bundle exec rails db:migrate
+      - run: mv config/database.yml.ci config/database.yml
+      - run: yarn install
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       - run:
           name: run tests
